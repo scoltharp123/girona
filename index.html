@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Discover the ultimate gravel cycling and bikepacking adventure in Girona. Get our premium 6-night itinerary for $19.99, including Strava routes, packing tips, and curated stops!">
-    <meta name="keywords" content="Girona gravel cycling, Girona bikepacking itinerary, Catalonia gravel routes, premium cycling guide, Costa Brava cycling">
+    <meta name="description" content="Discover the ultimate gravel cycling and bikepacking adventure in Girona. Download our free 6-night itinerary, including Strava routes, packing tips, and curated stops!">
+    <meta name="keywords" content="Girona gravel cycling, Girona bikepacking itinerary, Catalonia gravel routes, free cycling guide, Costa Brava cycling">
     <meta name="author" content="Girona Luxe Bikepacking">
-    <title>Girona Gravel Bikepacking Guide | $19.99 Itinerary</title>
+    <title>Girona Gravel Bikepacking Guide | Free Itinerary</title>
     <script src="https://cdn.jsdelivr.net/npm/react@18.3.1/umd/react.production.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@babel/standalone@7.25.6/babel.min.js"></script>
@@ -135,7 +135,7 @@
                     <a href="/" className="text-2xl font-bold text-emerald-400">Girona Luxe Bikepacking</a>
                     <div className="space-x-4">
                         <a href="#itinerary" className="text-gray-100 hover:text-emerald-400">Itinerary</a>
-                        <a href="#booking-form" className="text-gray-100 hover:text-emerald-400">Purchase</a>
+                        <a href="#download-form" className="text-gray-100 hover:text-emerald-400">Download</a>
                         <a href="#blog" className="text-gray-100 hover:text-emerald-400">Blog</a>
                         <a href="#faq" className="text-gray-100 hover:text-emerald-400">FAQ</a>
                     </div>
@@ -147,7 +147,7 @@
             <header className="hero-section text-white">
                 <div className="container mx-auto text-center animate-fadeIn relative z-10">
                     <h1 className="text-6xl md:text-4xl font-extrabold tracking-tight">Girona Gravel Bikepacking Guide</h1>
-                    <p className="mt-4 text-xl font-light italic text-gray-100">The Ultimate 6-Night Adventure for $19.99!</p>
+                    <p className="mt-4 text-xl font-light italic text-gray-100">Your Free 6-Night Adventure Awaits!</p>
                     <a
                         href="#itinerary"
                         className="mt-6 inline-block bg-orange-600 text-white font-semibold py-3 px-6 rounded-full hover:bg-orange-500 transition hover-scale"
@@ -195,11 +195,11 @@
         const StickyCTA = () => (
             <div className="fixed bottom-4 right-4 z-50">
                 <a
-                    href="#booking-form"
+                    href="#download-form"
                     className="bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-blue-500 transition hover-scale"
-                    aria-label="Purchase itinerary now"
+                    aria-label="Download itinerary now"
                 >
-                    Get Itinerary ($19.99)
+                    Download Free Itinerary
                 </a>
             </div>
         );
@@ -276,10 +276,10 @@
             );
         };
 
-        const BookingForm = () => {
+        const DownloadForm = () => {
             const [name, setName] = React.useState('');
             const [email, setEmail] = React.useState('');
-            const [donation, setDonation] = React.useState('19.99');
+            const [donation, setDonation] = React.useState('');
             const [error, setError] = React.useState('');
 
             const handleSubmit = (e) => {
@@ -292,22 +292,22 @@
                     setError('Valid email is required');
                     return;
                 }
-                if (parseFloat(donation) < 1) {
-                    setError('Donation must be at least $1');
-                    return;
-                }
                 setError('');
-                alert(`Thank you, ${name}! Your $${donation} itinerary request has been submitted. We'll send the PDF to ${email}.`);
+                alert(`Thank you, ${name}! Your free itinerary will be sent to ${email}. ${donation ? 'We appreciate your donation of $' + donation + '!' : ''}`);
             };
 
             const handleStripePayPal = () => {
-                alert('Redirecting to Stripe/PayPal for $${donation} payment (mock integration).');
+                if (!donation || parseFloat(donation) < 1) {
+                    setError('Donation must be at least $1');
+                    return;
+                }
+                alert(`Redirecting to Stripe/PayPal for $${donation} donation (mock integration).`);
             };
 
             return (
-                <div id="booking-form" className="bg-gray-800 p-10 rounded-lg shadow-lg mt-12 animate-fade-in">
-                    <h3 className="text-2xl font-bold text-emerald-400 mb-4">Get Your Gravel Itinerary for $19.99</h3>
-                    <p className="text-gray-100 mb-6">Unlock the ultimate Girona gravel cycling guide! For $19.99 (or your chosen donation), receive:</p>
+                <div id="download-form" className="bg-gray-800 p-10 rounded-lg shadow-lg mt-12 animate-fade-in">
+                    <h3 className="text-2xl font-bold text-emerald-400 mb-4">Download Your Free Gravel Itinerary</h3>
+                    <p className="text-gray-100 mb-6">Unlock the ultimate Girona gravel cycling guide for free! Your download includes:</p>
                     <ul className="text-gray-100 mb-6 list-disc list-inside">
                         <li>Detailed 6-day PDF itinerary</li>
                         <li>Strava route links for gravel and mixed terrain</li>
@@ -342,34 +342,33 @@
                         />
                     </div>
                     <div className="mb-6">
-                        <label htmlFor="donation" className="block text-gray-100 mb-2">Donation Amount ($)</label>
+                        <label htmlFor="donation" className="block text-gray-100 mb-2">Optional Donation ($)</label>
                         <input
                             id="donation"
                             type="number"
                             value={donation}
                             onChange={(e) => setDonation(e.target.value)}
                             className="w-full p-2 rounded-lg bg-gray-700 text-gray-100 border border-gray-600 input-field"
-                            placeholder="19.99"
+                            placeholder="Enter any amount to support us"
                             min="1"
                             step="0.01"
-                            aria-label="Donation amount"
-                            aria-required="true"
+                            aria-label="Optional donation amount"
                         />
                     </div>
                     <div className="flex flex-col space-y-4">
                         <button
                             onClick={handleSubmit}
                             className="w-full bg-blue-600 text-white font-semibold py-3 rounded-lg hover:bg-blue-500 transition hover-scale"
-                            aria-label={`Purchase itinerary for $${donation}`}
+                            aria-label="Download free itinerary"
                         >
-                            Purchase Itinerary for ${donation}
+                            Download Free Itinerary
                         </button>
                         <button
                             onClick={handleStripePayPal}
                             className="w-full bg-blue-600 text-white font-semibold py-3 rounded-lg hover:bg-blue-500 transition hover-scale"
-                            aria-label="Purchase with Stripe or PayPal"
+                            aria-label="Donate with Stripe or PayPal"
                         >
-                            Purchase with Stripe/PayPal
+                            Donate with Stripe/PayPal
                         </button>
                         <a
                             href="https://www.buymeacoffee.com/girona-gravel"
@@ -408,19 +407,40 @@
             </div>
         );
 
+        const WhyGirona = () => (
+            <div className="mt-12">
+                <h3 className="text-2xl font-bold text-emerald-400 mb-4 text-center">Why Girona is a Gravel Cycling Paradise</h3>
+                <p className="text-gray-100 mb-6 text-center">Girona is more than just a destination—it’s a cyclist’s dream where history, nature, and adventure converge.</p>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div className="bg-gray-800 p-6 rounded-lg hover-scale">
+                        <h4 className="text-lg font-semibold text-gray-100">Rich Cultural Heritage</h4>
+                        <p className="text-gray-100">Pedal through Girona’s medieval streets, past the iconic Girona Cathedral and ancient city walls, steeped in history dating back to Roman times. Stop in Besalú to explore its 11th-century bridge and Jewish quarter.</p>
+                    </div>
+                    <div className="bg-gray-800 p-6 rounded-lg hover-scale">
+                        <h4 className="text-lg font-semibold text-gray-100">Breathtaking Landscapes</h4>
+                        <p className="text-gray-100">From the rolling hills of the Garrotxa Volcanic Zone to the rugged cliffs of the Costa Brava, Girona’s diverse terrain offers endless gravel trails with stunning views, serene lakes, and lush forests.</p>
+                    </div>
+                    <div className="bg-gray-800 p-6 rounded-lg hover-scale">
+                        <h4 className="text-lg font-semibold text-gray-100">World-Class Cycling Community</h4>
+                        <p className="text-gray-100">Girona is home to professional cyclists and a vibrant cycling culture. Join local group rides, visit cyclist-friendly cafes like La Fabrica, and connect with our Strava community to share your journey.</p>
+                    </div>
+                </div>
+            </div>
+        );
+
         const BlogSection = () => (
             <div id="blog" className="mt-12">
                 <h3 className="text-2xl font-bold text-emerald-400 mb-4 text-center">Gravel Blog</h3>
                 <p className="text-gray-100 mb-6 text-center">Get inspired with tips and stories from Girona’s gravel trails.</p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="bg-gray-800 p-6 rounded-lg hover-scale">
-                        <img images={["./rivergirona.jpg"]} alt="Rocacorba climb gravel trail" className="route-image mb-4" loading="lazy" />
+                        <img src="./rivergirona.jpg" alt="Rocacorba climb gravel trail" className="route-image mb-4" loading="lazy" />
                         <h4 className="text-lg font-semibold text-gray-100">Top 5 Gravel Climbs in Girona</h4>
                         <p className="text-gray-100">From Rocacorba to Els Àngels, discover the best climbs for gravel enthusiasts in Catalonia.</p>
                         <a href="#blog" className="text-emerald-400 hover:underline mt-2 inline-block">Read More</a>
                     </div>
                     <div className="bg-gray-800 p-6 rounded-lg hover-scale">
-                        <img images={["./rivergirona.jpg"]} alt="Girona bikepacking scenery" className="route-image mb-4" loading="lazy" />
+                        <img src="./rivergirona.jpg" alt="Girona bikepacking scenery" className="route-image mb-4" loading="lazy" />
                         <h4 className="text-lg font-semibold text-gray-100">Why Girona is a Bikepacking Paradise</h4>
                         <p className="text-gray-100">Explore Girona’s mix of gravel trails, culture, and cuisine that make it a must-visit.</p>
                         <a href="#blog" className="text-emerald-400 hover:underline mt-2 inline-block">Read More</a>
@@ -434,7 +454,7 @@
                 <h3 className="text-2xl font-bold text-emerald-400 mb-4 text-center">Frequently Asked Questions</h3>
                 <div className="space-y-4">
                     <div className="bg-gray-800 p-6 rounded-lg hover-scale">
-                        <h4 className="text-lg font-semibold text-gray-100">What’s included in the $19.99 itinerary?</h4>
+                        <h4 className="text-lg font-semibold text-gray-100">What’s included in the free itinerary?</h4>
                         <p className="text-gray-100">A PDF with daily gravel routes, Strava links, curated accommodations, dining, packing tips, and gear recommendations.</p>
                     </div>
                     <div className="bg-gray-800 p-6 rounded-lg hover-scale">
@@ -443,7 +463,7 @@
                     </div>
                     <div className="bg-gray-800 p-6 rounded-lg hover-scale">
                         <h4 className="text-lg font-semibold text-gray-100">How do I receive the itinerary?</h4>
-                        <p className="text-gray-100">After your $19.99 purchase (or custom donation), we’ll email the PDF and Strava links within 24 hours.</p>
+                        <p className="text-gray-100">After submitting your details, we’ll email the PDF and Strava links within 24 hours.</p>
                     </div>
                 </div>
             </div>
@@ -463,7 +483,7 @@
                     <div className="bg-gray-800 p-6 rounded-lg hover-scale flex items-center">
                         <img src="https://via.placeholder.com/50?text=Carlos" alt="Cyclist Carlos avatar" className="w-12 h-12 rounded-full mr-4" loading="lazy" />
                         <div>
-                            <p className="text-gray-100 italic">"Worth every cent! The gravel paths and coastal views were unforgettable."</p>
+                            <p className="text-gray-100 italic">"The gravel paths and coastal views were unforgettable. A must-do adventure!"</p>
                             <p className="text-gray-300 mt-2 font-semibold">— Carlos, Spain</p>
                         </div>
                     </div>
@@ -495,6 +515,31 @@
             </div>
         );
 
+        const GironaHighlights = () => (
+            <div className="mt-12">
+                <h3 className="text-2xl font-bold text-emerald-400 mb-4 text-center">Girona’s Must-See Highlights</h3>
+                <p className="text-gray-100 mb-6 text-center">Beyond the trails, Girona offers unforgettable experiences to enrich your adventure.</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="bg-gray-800 p-6 rounded-lg hover-scale">
+                        <h4 className="text-lg font-semibold text-gray-100">Culinary Delights</h4>
+                        <p className="text-gray-100">Savor Catalonia’s cuisine at local markets like Mercat del Lleó or dine at Michelin-starred restaurants like El Celler de Can Roca, blending tradition with innovation.</p>
+                    </div>
+                    <div className="bg-gray-800 p-6 rounded-lg hover-scale">
+                        <h4 className="text-lg font-semibold text-gray-100">Historical Landmarks</h4>
+                        <p className="text-gray-100">Visit the colorful houses along the Onyar River, explore the Jewish Quarter’s narrow alleys, or climb the Sant Feliu Basilica for panoramic views.</p>
+                    </div>
+                    <div className="bg-gray-800 p-6 rounded-lg hover-scale">
+                        <h4 className="text-lg font-semibold text-gray-100">Festivals and Events</h4>
+                        <p className="text-gray-100">Time your trip for Girona’s Temps de Flors festival in May, where the city blooms with floral displays, or join the Girona Cycling Festival for rides and expos.</p>
+                    </div>
+                    <div className="bg-gray-800 p-6 rounded-lg hover-scale">
+                        <h4 className="text-lg font-semibold text-gray-100">Coastal Adventures</h4>
+                        <p className="text-gray-100">Take a break from cycling to kayak along the Costa Brava, explore hidden coves, or relax on pristine beaches like Sa Caleta in L’Escala.</p>
+                    </div>
+                </div>
+            </div>
+        );
+
         const App = () => (
             <div>
                 <NavBar />
@@ -503,10 +548,11 @@
                     <section className="mb-16 text-center animate-fade-in">
                         <h2 className="text-4xl md:text-3xl font-bold text-gray-100 mb-6">The Perfect Girona Gravel Cycling Guide</h2>
                         <p className="text-lg text-gray-100 max-w-3xl mx-auto">
-                            Experience a 269-mile gravel bikepacking adventure through Girona’s world-class landscapes. From enchanted forests to the rugged Costa Brava, this $19.99 itinerary is your key to the best gravel cycling in Catalonia, complete with Strava routes, curated stops, and expert tips.
+                            Experience a 269-mile gravel bikepacking adventure through Girona’s world-class landscapes. From enchanted forests to the rugged Costa Brava, this free itinerary is your key to the best gravel cycling in Catalonia, complete with Strava routes, curated stops, and expert tips. Discover why Girona is a global cycling mecca, with its blend of medieval charm, diverse terrain, and vibrant cycling culture.
                         </p>
                         <RouteMap />
                     </section>
+                    <WhyGirona />
                     <section id="itinerary">
                         <h2 className="text-4xl md:text-3xl font-bold text-gray-100 mb-8 text-center">Your Gravel Itinerary</h2>
                         <ItineraryDay
@@ -600,8 +646,9 @@
                             dining="La Fabrica, Girona — Celebrate with exquisite coffee and pastries."
                         />
                     </section>
-                    <BookingForm />
+                    <DownloadForm />
                     <GearGuide />
+                    <GironaHighlights />
                     <BlogSection />
                     <Testimonials />
                     <StravaFeed />
@@ -615,7 +662,7 @@
                             Join Our Strava
                         </a>
                         <a
-                            href="https://x.com/share?text=Just got the ultimate Girona gravel cycling itinerary for $19.99! 🚴‍♀️ Check it out!&url=https://www.girona-luxe-bikepacking.net"
+                            href="https://x.com/share?text=Just got the ultimate Girona gravel cycling itinerary for free! 🚴‍♀️ Check it out!&url=https://www.girona-luxe-bikepacking.net"
                             className="bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-blue-500 transition-all duration-300 hover:scale-105"
                             aria-label="Share on X"
                         >
