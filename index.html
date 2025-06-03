@@ -124,6 +124,53 @@
             height: 400px;
             border-radius: 0.75rem;
         }
+        .weather-chart {
+            display: flex;
+            align-items: flex-end;
+            gap: 2px;
+            height: 200px;
+            position: relative;
+            margin-top: 1rem;
+        }
+        .weather-bar {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+        }
+        .weather-bar div {
+            width: 100%;
+            border-radius: 4px;
+        }
+        .temp-bar {
+            background-color: #059669;
+        }
+        .precip-bar {
+            background-color: #3b82f6;
+        }
+        .weather-label {
+            font-size: 0.75rem;
+            color: #d1d5db;
+            margin-top: 0.5rem;
+            text-align: center;
+        }
+        .weather-legend {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .weather-legend div {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .weather-legend div span {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+        }
     </style>
 </head>
 <body className="bg-gray-800 text-gray-100">
@@ -449,6 +496,73 @@
             </div>
         );
 
+        const WeatherSection = () => {
+            const weatherData = [
+                { month: 'Jan', temp: 13, precip: 60, suitability: 'Cool and wet; less ideal, but possible with rain gear.' },
+                { month: 'Feb', temp: 14, precip: 50, suitability: 'Cool, occasional rain; suitable with proper layering.' },
+                { month: 'Mar', temp: 16, precip: 50, suitability: 'Mild, some showers; good for early-season rides.' },
+                { month: 'Apr', temp: 18, precip: 60, suitability: 'Pleasant, occasional rain; ideal for spring cycling.' },
+                { month: 'May', temp: 22, precip: 50, suitability: 'Warm, low rain; excellent for gravel routes.' },
+                { month: 'Jun', temp: 26, precip: 30, suitability: 'Warm, mostly dry; prime cycling season.' },
+                { month: 'Jul', temp: 29, precip: 20, suitability: 'Hot, dry; great but requires hydration and sun protection.' },
+                { month: 'Aug', temp: 29, precip: 30, suitability: 'Hot, mostly dry; good but plan for early rides.' },
+                { month: 'Sep', temp: 26, precip: 60, suitability: 'Warm, some rain; excellent for late-season rides.' },
+                { month: 'Oct', temp: 22, precip: 80, suitability: 'Mild, wetter; good with rain gear.' },
+                { month: 'Nov', temp: 17, precip: 70, suitability: 'Cool, wet; suitable with proper gear.' },
+                { month: 'Dec', temp: 14, precip: 60, suitability: 'Cool, rainy; less ideal but feasible.' }
+            ];
+
+            const maxTemp = 30; // Max temp for scaling (°C)
+            const maxPrecip = 100; // Max precip for scaling (mm)
+
+            return (
+                <div id="weather" className="mt-12">
+                    <h3 className="text-2xl font-bold text-emerald-400 mb-4 text-center">Weather in Girona & Costa Brava</h3>
+                    <p className="text-gray-100 mb-6 text-center">Girona and Costa Brava enjoy a Mediterranean climate with mild winters and warm summers, perfect for gravel cycling year-round. Below is a monthly breakdown to help you plan your trip, along with a chart of average temperatures and precipitation.</p>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                        {weatherData.map((data, index) => (
+                            <div key={index} className="bg-gray-800 p-6 rounded-lg hover-scale">
+                                <h4 className="text-lg font-semibold text-gray-100">{data.month}</h4>
+                                <p className="text-gray-100">Avg High: {data.temp}°C</p>
+                                <p className="text-gray-100">Precipitation: {data.precip}mm</p>
+                                <p className="text-gray-100 mt-2">{data.suitability}</p>
+                            </div>
+                        ))}
+                    </div>
+                    <div className="bg-gray-800 p-6 rounded-lg">
+                        <h4 className="text-lg font-semibold text-gray-100 mb-4 text-center">Temperature & Precipitation by Month</h4>
+                        <div className="weather-chart">
+                            {weatherData.map((data, index) => (
+                                <div key={index} className="weather-bar">
+                                    <div
+                                        className="temp-bar"
+                                        style={{ height: `${(data.temp / maxTemp) * 150}px` }}
+                                        title={`Temperature: ${data.temp}°C`}
+                                    ></div>
+                                    <div
+                                        className="precip-bar"
+                                        style={{ height: `${(data.precip / maxPrecip) * 150}px`, marginTop: '4px' }}
+                                        title={`Precipitation: ${data.precip}mm`}
+                                    ></div>
+                                    <div className="weather-label">{data.month}</div>
+                                </div>
+                            ))}
+                        </div>
+                        <div className="weather-legend">
+                            <div>
+                                <span className="temp-bar"></span>
+                                <span className="text-gray-100">Temperature (°C)</span>
+                            </div>
+                            <div>
+                                <span className="precip-bar"></span>
+                                <span className="text-gray-100">Precipitation (mm)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
         const FAQSection = () => (
             <div id="faq" className="mt-12">
                 <h3 className="text-2xl font-bold text-emerald-400 mb-4 text-center">Frequently Asked Questions</h3>
@@ -652,6 +766,7 @@
                     <BlogSection />
                     <Testimonials />
                     <StravaFeed />
+                    <WeatherSection />
                     <FAQSection />
                     <section className="text-center mt-12 flex justify-center items-center space-x-4">
                         <a
