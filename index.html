@@ -3,77 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Discover the ultimate gravel cycling and bikepacking adventure in Girona. Download our free 6-night itinerary, including Strava routes, packing tips, and curated stops!">
-    <meta name="keywords" content="Girona gravel cycling, Girona bikepacking itinerary, Catalonia gravel routes, free cycling guide, Costa Brava cycling">
+    <meta name="description" content="Experience a premier gravel cycling and bikepacking journey in Girona, Spain. Access our curated 6-night itinerary with Strava routes, refined accommodations, and expert recommendations, complimentary with your registration.">
+    <meta name="keywords" content="Girona gravel cycling, Girona bikepacking itinerary, Catalonia gravel routes, premium cycling guide, Costa Brava cycling">
     <meta name="author" content="Girona Luxe Bikepacking">
-    <title>Girona Gravel Bikepacking Guide | Free Itinerary</title>
-    <script src="https://cdn.jsdelivr.net/npm/react@18.3.1/umd/react.production.min.js" integrity="sha256-J3j5j0j0j0j0j0j0j0j0j0j0j0j0j0j0j0j0j0j0j0j0j0j0j0j0j0j0j0j0j0j0" crossorigin="anonymous" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/react-dom@18.3.1/umd/react-dom.production.min.js" integrity="sha256-K3j5j0j0j0j0j0j0j0j0j0j0j0j0j0j0j0j0j0j0j0j0j0j0j0j0j0j0j0j0j0j0" crossorigin="anonymous" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/@babel/standalone@7.25.6/babel.min.js" integrity="sha256-L3j5j0j0j0j0j0j0j0j0j0j0j0j0j0j0j0j0j0j0j0j0j0j0j0j0j0j0j0j0j0j0" crossorigin="anonymous" defer></script>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" integrity="sha256-M3j5j0j0j0j0j0j0j0j0j0j0j0j0j0j0j0j0j0j0j0j0j0j0j0j0j0j0j0j0j0j0" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoY6BL5cG5wsG5wsG5wsG5wsG5wsG5wsG5wsG5w=" crossorigin="anonymous" />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="anonymous" defer></script>
+    <title>Girona Gravel Bikepacking Journey | Premium Itinerary</title>
+    <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin defer></script>
+    <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin defer></script>
+    <script src="https://unpkg.com/@babel/standalone@7.25.6/babel.min.js" crossorigin defer></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin defer></script>
     <style>
+        :root {
+            --primary: #10B981; /* Emerald green */
+            --accent: #F59E0B; /* Gold */
+            --dark: #111827; /* Deep navy */
+            --light: #F3F4F6; /* Light gray */
+        }
+
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(to bottom, #1f2937, #111827);
+            background: linear-gradient(135deg, var(--dark) 0%, #1f2937 100%);
+            color: var(--light);
+            overflow-x: hidden;
         }
+
         h1, h2, h3, h4 {
             font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
         @keyframes parallax {
             0% { background-position: center 0; }
-            100% { background-position: center 20px; }
+            100% { background-position: center 30px; }
         }
-        .animate-fadeIn {
-            animation: fadeIn 1s ease-out;
+
+        .animate-fadeInUp {
+            animation: fadeInUp 1s ease-out forwards;
         }
+
+        .animate-pulse {
+            animation: pulse 2s infinite ease-in-out;
+        }
+
         .hover-scale:hover {
-            transform: scale(1.05);
+            transform: scale(1.03);
             transition: transform 0.3s ease;
         }
+
         .route-image {
-            max-height: 300px;
+            max-height: 350px;
             object-fit: cover;
             width: 100%;
-            border-radius: 0.75rem;
-            transition: transform 0.7s ease-in-out;
+            border-radius: 1rem;
+            transition: transform 0.5s ease, opacity 0.5s ease;
         }
+
         .route-image:hover {
-            transform: scale(1.1);
+            transform: scale(1.08);
+            opacity: 0.9;
         }
+
         .carousel-container {
             position: relative;
             overflow: hidden;
+            border-radius: 1rem;
         }
+
         .carousel {
             display: flex;
             transition: transform 0.7s ease-in-out;
         }
+
         .carousel img {
             flex: 0 0 100%;
         }
+
         .input-field {
-            transition: border-color 0.3s ease;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
+
         .input-field:focus {
-            border-color: #f97316;
+            border-color: var(--accent);
+            box-shadow: 0 0 8px rgba(245, 158, 11, 0.3);
             outline: none;
         }
+
         .hero-section {
             position: relative;
-            background: url('https://via.placeholder.com/1200x600.png?text=Girona+Gravel+Hero') center/cover no-repeat;
-            animation: parallax 10s infinite alternate ease-in-out;
-            height: 600px;
+            background: url('https://www.travelsewhere.net/wp-content/uploads/2021/06/DSC_1175-1.jpg') center/cover no-repeat;
+            animation: parallax 12s infinite alternate ease-in-out;
+            height: 700px;
             display: flex;
             align-items: center;
             justify-content: center;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
         }
+
         .hero-section::before {
             content: '';
             position: absolute;
@@ -81,57 +120,104 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), transparent);
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2));
         }
+
         .nav-bar {
-            backdrop-filter: blur(10px);
-            background: rgba(17, 24, 39, 0.8);
+            backdrop-filter: blur(12px);
+            background: rgba(17, 24, 39, 0.85);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
+
+        .btn-primary {
+            background: linear-gradient(90deg, var(--primary), #059669);
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(90deg, #059669, var(--primary));
+            transform: scale(1.05);
+        }
+
+        .btn-accent {
+            background: linear-gradient(90deg, var(--accent), #D97706);
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn-accent:hover {
+            background: linear-gradient(90deg, #D97706, var(--accent));
+            transform: scale(1.05);
+        }
+
         @media (max-width: 640px) {
             .hero-section {
-                height: 400px;
+                height: 500px;
             }
+
             h1 {
-                font-size: 2.5rem;
+                font-size: 2.75rem;
             }
+
             h2 {
-                font-size: 1.875rem;
+                font-size: 2rem;
             }
+
             .carousel-container button {
-                padding: 0.75rem 1.5rem;
+                padding: 0.5rem 1rem;
+                font-size: 0.875rem;
             }
+
             .itinerary-description {
                 display: -webkit-box;
                 -webkit-line-clamp: 3;
                 -webkit-box-orient: vertical;
                 overflow: hidden;
             }
+
             .read-more {
                 cursor: pointer;
-                color: #34d399;
+                color: var(--accent);
+                font-weight: 600;
+            }
+
+            #itinerary {
+                grid-template-columns: 1fr;
+            }
+
+            #map {
+                height: 300px;
             }
         }
+
         #itinerary {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
         }
+
         .itinerary-card {
-            border: 1px solid #374151;
-            padding: 2.5rem;
+            border: 1px solid rgba(55, 65, 81, 0.3);
+            background: rgba(31, 41, 55, 0.95);
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
         }
+
         #map {
-            height: 400px;
-            border-radius: 0.75rem;
+            height: 450px;
+            border-radius: 1rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
+
         .weather-chart {
             display: flex;
             align-items: flex-end;
-            gap: 2px;
-            height: 200px;
+            gap: 4px;
+            height: 220px;
             position: relative;
-            margin-top: 1rem;
+            margin-top: 1.5rem;
         }
+
         .weather-bar {
             flex: 1;
             display: flex;
@@ -139,49 +225,73 @@
             justify-content: flex-end;
             align-items: center;
         }
+
         .weather-bar div {
             width: 100%;
-            border-radius: 4px;
+            border-radius: 6px;
+            transition: height 0.5s ease;
         }
+
         .temp-bar {
-            background-color: #059669;
+            background: linear-gradient(0deg, #10B981, #059669);
         }
+
         .precip-bar {
-            background-color: #3b82f6;
+            background: linear-gradient(0deg, #3B82F6, #1E40AF);
         }
+
         .weather-label {
-            font-size: 0.75rem;
-            color: #d1d5db;
-            margin-top: 0.5rem;
+            font-size: 0.8rem;
+            color: var(--light);
+            margin-top: 0.75rem;
             text-align: center;
         }
+
         .weather-legend {
             display: flex;
             justify-content: center;
-            gap: 1rem;
-            margin-top: 1rem;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
         }
+
         .weather-legend div {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.75rem;
         }
+
         .weather-legend div span {
-            width: 20px;
-            height: 20px;
-            border-radius: 4px;
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
         }
+
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         .error-boundary {
-            background-color: #1f2937;
+            background: rgba(255, 0, 0, 0.1);
+            border: 1px solid #ff3333;
             padding: 2rem;
-            border-radius: 0.75rem;
+            border-radius: 1rem;
             text-align: center;
+            color: #ff3333;
+            margin: 2rem auto;
+            max-width: 600px;
         }
     </style>
 </head>
-<body className="bg-gray-800 text-gray-100">
+<body className="bg-gray-900 text-gray-100">
     <div id="root"></div>
-    <script type="text/babel">
+    <script type="text/babel" data-type="module">
         // Error Boundary Component
         class ErrorBoundary extends React.Component {
             state = { hasError: false, error: null };
@@ -190,22 +300,13 @@
                 return { hasError: true, error };
             }
 
-            componentDidCatch(error, errorInfo) {
-                console.error('Error caught by boundary:', error, errorInfo);
-            }
-
             render() {
                 if (this.state.hasError) {
                     return (
                         <div className="error-boundary">
-                            <h2 className="text-2xl font-bold text-red-400">Something went wrong.</h2>
-                            <p className="text-gray-100 mt-2">{this.state.error?.message || 'Unknown error'}</p>
-                            <button
-                                className="mt-4 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-500"
-                                onClick={() => window.location.reload()}
-                            >
-                                Reload Page
-                            </button>
+                            <h2>Something went wrong.</h2>
+                            <p>{this.state.error?.message || 'An unexpected error occurred.'}</p>
+                            <p>Please refresh the page or contact support.</p>
                         </div>
                     );
                 }
@@ -213,15 +314,36 @@
             }
         }
 
+        // Scroll reveal effect
+        const useScrollReveal = () => {
+            React.useEffect(() => {
+                const elements = document.querySelectorAll('.scroll-reveal');
+                const observer = new IntersectionObserver(
+                    (entries) => {
+                        entries.forEach((entry) => {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add('visible');
+                                observer.unobserve(entry.target);
+                            }
+                        });
+                    },
+                    { threshold: 0.1 }
+                );
+
+                elements.forEach((el) => observer.observe(el));
+                return () => observer.disconnect();
+            }, []);
+        };
+
         const NavBar = () => (
-            <nav className="nav-bar fixed top-0 w-full z-50 py-4">
-                <div className="container mx-auto px-4 flex justify-between items-center">
-                    <a href="/" className="text-2xl font-bold text-emerald-400">Girona Luxe Bikepacking</a>
-                    <div className="space-x-4">
-                        <a href="#itinerary" className="text-gray-100 hover:text-emerald-400">Itinerary</a>
-                        <a href="#download-form" className="text-gray-100 hover:text-emerald-400">Download</a>
-                        <a href="#blog" className="text-gray-100 hover:text-emerald-400">Blog</a>
-                        <a href="#faq" className="text-gray-100 hover:text-emerald-400">FAQ</a>
+            <nav className="nav-bar fixed top-0 w-full z-50 py-5">
+                <div className="container mx-auto px-6 flex justify-between items-center">
+                    <a href="/" className="text-3xl font-bold text-emerald-400 tracking-tight">Girona Luxe Bikepacking</a>
+                    <div className="space-x-6">
+                        <a href="#itinerary" className="text-gray-100 hover:text-emerald-400 transition-colors font-semibold">Itinerary</a>
+                        <a href="#download-form" className="text-gray-100 hover:text-emerald-400 transition-colors font-semibold">Request Access</a>
+                        <a href="#blog" className="text-gray-100 hover:text-emerald-400 transition-colors font-semibold">Insights</a>
+                        <a href="#faq" className="text-gray-100 hover:text-emerald-400 transition-colors font-semibold">FAQ</a>
                     </div>
                 </div>
             </nav>
@@ -229,81 +351,71 @@
 
         const Header = () => (
             <header className="hero-section text-white">
-                <div className="container mx-auto text-center animate-fadeIn relative z-10">
-                    <h1 className="text-6xl md:text-4xl font-extrabold tracking-tight">Girona Gravel Bikepacking Guide</h1>
-                    <p className="mt-4 text-xl font-light italic text-gray-100">Your Free 6-Night Adventure Awaits!</p>
+                <div className="container mx-auto text-center animate-fadeInUp relative z-10 px-4">
+                    <h1 className="text-6xl sm:text-7xl font-extrabold tracking-tight mb-4">Girona Gravel Journey</h1>
+                    <p className="text-2xl font-medium text-gray-200 max-w-2xl mx-auto">Embark on a curated 6-night bikepacking experience through Spain’s premier cycling destination, crafted for discerning travelers.</p>
                     <a
-                        href="#itinerary"
-                        className="mt-6 inline-block bg-orange-600 text-white font-semibold py-3 px-6 rounded-full hover:bg-orange-500 transition hover-scale"
-                        aria-label="Explore the Girona gravel itinerary"
+                        href="#download-form"
+                        className="mt-8 inline-block btn-primary text-white font-semibold py-4 px-8 rounded-full text-lg"
+                        aria-label="Request your complimentary Girona gravel itinerary"
                     >
-                        Discover the Route
+                        Request Your Complimentary Itinerary
                     </a>
-                    <img
-                        src="./old-town-girona.png"
-                        alt="Old Town Girona with colorful buildings along the Onyar River"
-                        className="route-image mt-6 mx-auto animate-fadeIn"
-                        loading="lazy"
-                        onError={(e) => { e.target.src = 'https://via.placeholder.com/1200x300.png?text=Image+Not+Found'; }}
-                    />
                 </div>
             </header>
         );
 
         const RouteMap = () => {
             React.useEffect(() => {
-                if (typeof L === 'undefined' || !document.getElementById('map')) {
-                    console.warn('Leaflet not loaded or map container missing');
-                    return;
-                }
-                let map = null;
-                try {
-                    map = L.map('map').setView([41.971, 2.821], 10);
-                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                        attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-                    }).addTo(map);
-                    L.polyline([
-                        [41.971, 2.821], // Girona
-                        [42.266, 2.724], // Sant Vicenç de Torelló
-                        [42.142, 2.960], // Banyoles
-                        [42.467, 3.162], // El Port de la Selva
-                        [42.362, 3.148], // L'Escala
-                        [41.853, 3.218], // Tossa de Mar
-                        [41.971, 2.821], // Girona
-                    ], { color: '#059669' }).addTo(map);
-                    const markers = [
-                        { pos: [41.971, 2.821], popup: 'Girona: Start/End' },
-                        { pos: [42.266, 2.724], popup: 'Sant Vicenç de Torelló' },
-                        { pos: [42.142, 2.960], popup: 'Banyoles: Lake Views' },
-                        { pos: [42.467, 3.162], popup: 'El Port de la Selva' },
-                        { pos: [42.362, 3.148], popup: "L'Escala: Beach Dip" },
-                        { pos: [41.853, 3.128], popup: 'Tossa de Mar' }
-                    ];
-                    markers.forEach(m => L.marker(m.pos).addTo(map).bindPopup(m.popup));
-                } catch (error) {
-                    console.error('Leaflet initialization error:', error);
-                }
-                return () => {
-                    if (map) {
-                        try {
-                            map.remove();
-                        } catch (e) {
-                            console.warn('Error removing map:', e);
-                        }
+                if (typeof L !== 'undefined' && document.getElementById('map')) {
+                    try {
+                        const map = L.map('map').setView([41.971, 2.821], 10);
+                        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                            attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+                            className: 'map-tiles'
+                        }).addTo(map);
+                        L.polyline([
+                            [41.971, 2.821], // Girona
+                            [42.266, 2.724], // Sant Vicenç de Torelló
+                            [42.142, 2.960], // Banyoles
+                            [42.467, 3.162], // El Port de la Selva
+                            [42.362, 3.148], // L'Escala
+                            [41.853, 3.218], // Tossa de Mar
+                            [41.971, 2.821], // Girona
+                        ], { color: '#10B981', weight: 4, opacity: 0.8 }).addTo(map);
+                        const markers = [
+                            { pos: [41.971, 2.821], popup: 'Girona: Start/End' },
+                            { pos: [42.266, 2.724], popup: 'Sant Vicenç de Torelló' },
+                            { pos: [42.142, 2.960], popup: 'Banyoles: Lake Views' },
+                            { pos: [42.467, 3.162], popup: 'El Port de la Selva' },
+                            { pos: [42.362, 3.148], popup: "L'Escala: Coastal Retreat" },
+                            { pos: [41.853, 3.128], popup: 'Tossa de Mar' }
+                        ];
+                        markers.forEach(m => L.marker(m.pos, {
+                            icon: L.divIcon({
+                                className: 'custom-marker',
+                                html: `<div style="background-color: #10B981; width: 12px; height: 12px; border-radius: 50%; border: 2px solid #fff;"></div>`
+                            })
+                        }).addTo(map).bindPopup(m.popup, { className: 'custom-popup' }));
+                        return () => {
+                            if (map) map.remove();
+                        };
+                    } catch (error) {
+                        console.error('Map initialization failed:', error);
                     }
-                };
+                }
             }, []);
-            return <div id="map" className="animate-fadeIn"></div>;
+            return <div id="map" className="animate-fadeInUp scroll-reveal"></div>;
         };
 
         const StickyCTA = () => (
-            <div className="fixed bottom-4 right-4 z-50">
+            <div className="fixed bottom-6 right-6 z-50">
                 <a
                     href="#download-form"
-                    className="bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-blue-500 transition hover-scale"
-                    aria-label="Download itinerary now"
+                    className="btn-accent text-white font-semibold py-4 px-8 rounded-full text-lg shadow-lg"
+                    aria-label="Request itinerary"
                 >
-                    Download Free Itinerary
+                    Request Itinerary
                 </a>
             </div>
         );
@@ -312,29 +424,19 @@
             const [currentImage, setCurrentImage] = React.useState(0);
             const [isExpanded, setIsExpanded] = React.useState(false);
 
-            const nextImage = () => {
-                setCurrentImage((prev) => (prev + 1) % (images?.length || 1));
-            };
-
-            const prevImage = () => {
-                setCurrentImage((prev) => (prev - 1 + (images?.length || 1)) % (images?.length || 1));
-            };
-
-            // Fallback for invalid images
-            const safeImages = images?.map(img => 
-                img.startsWith('https://drive.google.com') ? 'https://via.placeholder.com/1200x300.png?text=Image+Not+Available' : img
-            ) || ['https://via.placeholder.com/1200x300.png?text=Image+Not+Available'];
+            const nextImage = () => setCurrentImage((prev) => (prev + 1) % (images?.length || 1));
+            const prevImage = () => setCurrentImage((prev) => (prev - 1 + (images?.length || 1)) % (images?.length || 1));
 
             return (
-                <div className="bg-gray-800 p-10 rounded-lg shadow-lg mb-6 hover-scale transition-transform animate-fade-in itinerary-card">
-                    <h3 className="text-3xl font-bold text-emerald-400">{day}: {title}</h3>
-                    <p className="text-gray-300 mt-2"><strong>Distance:</strong> {distance} | <strong>Elevation Gain:</strong> {elevation}</p>
-                    <p className={`mt-4 text-gray-100 ${isExpanded ? '' : 'itinerary-desc'}`}>
+                <div className="itinerary-card hover-scale transition-transform scroll-reveal">
+                    <h3 className="text-3xl font-bold text-emerald-400 mb-3">{day}: {title}</h3>
+                    <p className="text-gray-300 mb-4"><strong>Distance:</strong> {distance} | <strong>Elevation:</strong> {elevation}</p>
+                    <p className={`text-gray-100 mb-4 ${isExpanded ? '' : 'itinerary-description'}`}>
                         {description}
                     </p>
                     {!isExpanded && (
                         <span
-                            className="read-more text-emerald-400 hover:underline cursor-pointer"
+                            className="read-more hover:underline"
                             onClick={() => setIsExpanded(true)}
                             tabIndex="0"
                             aria-label={`Read more about ${title}`}
@@ -342,35 +444,32 @@
                             Read More
                         </span>
                     )}
-                    {safeImages.length > 0 && (
-                        <div className="carousel-container mt-4">
+                    {images?.length > 0 && (
+                        <div className="carousel-container mt-6">
                             <div className="carousel" style={{ transform: `translateX(-${currentImage * 100}%)` }}>
-                                {safeImages.map((image, index) => (
+                                {images.map((image, index) => (
                                     <img
                                         key={index}
                                         src={image}
                                         alt={`Gravel cycling route on ${title} ${index + 1}`}
                                         className="route-image"
                                         loading="lazy"
-                                        onError={(e) => { e.target.src = 'https://via.placeholder.com/1200x300.png?text=Image+Not+Found'; }}
                                     />
                                 ))}
                             </div>
-                            {safeImages.length > 1 && (
+                            {images.length > 1 && (
                                 <div className="flex justify-between mt-4">
                                     <button
                                         onClick={prevImage}
-                                        className="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-500"
+                                        className="btn-primary text-white px-5 py-2 rounded-full text-sm font-semibold"
                                         aria-label="Previous image"
-                                        tabIndex="0"
                                     >
                                         Prev
                                     </button>
                                     <button
                                         onClick={nextImage}
-                                        className="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-500"
+                                        className="btn-primary text-white px-5 py-2 rounded-full text-sm font-semibold"
                                         aria-label="Next image"
-                                        tabIndex="0"
                                     >
                                         Next
                                     </button>
@@ -395,216 +494,395 @@
             const handleSubmit = (e) => {
                 e.preventDefault();
                 if (!name.trim()) {
-                    setError('Name is required');
+                    setError('Please enter your name');
                     return;
                 }
                 if (!email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-                    setError('Valid email is required');
+                    setError('Please enter a valid email');
                     return;
                 }
                 setError('');
-                alert(`Thank you, ${name}! Your free itinerary will be sent to ${email}. ${donation ? 'We appreciate your donation of $' + donation + '!' : ''}`);
+                alert(`Thank you, ${name}. Your premium itinerary will be sent to ${email}. ${donation ? 'Your $' + donation + ' contribution supports our cycling community.' : ''}`);
             };
 
             const handleStripePayPal = () => {
                 if (!donation || parseFloat(donation) < 1) {
-                    setError('Donation must be at least $1');
+                    setError('Contribution must be at least $1');
                     return;
                 }
-                alert(`Redirecting to Stripe/PayPal for $${donation} donation (mock integration).`);
+                alert(`Redirecting to Stripe/PayPal for $${donation} contribution (mock integration).`);
             };
 
             return (
-                <div id="download-form" className="bg-gray-800 p-10 rounded-lg shadow-lg mt-12 animate-fade-in">
-                    <h3 className="text-2xl font-bold text-emerald-400 mb-4">Download Your Free Gravel Itinerary</h3>
-                    <p className="text-gray-100 mb-6">Unlock the ultimate Girona gravel cycling guide for free! Your download includes:</p>
-                    <ul className="text-gray-100 mb-6 list-disc list-inside">
-                        <li>Detailed 6-day PDF itinerary</li>
-                        <li>Strava route links for gravel and mixed terrain</li>
-                        <li>Packing tips for bikepacking</li>
-                        <li>Gravel-specific gear recommendations</li>
-                    </ul>
-                    {error && <p className="text-red-400 mb-4">{error}</p>}
-                    <div className="mb-4">
-                        <label htmlFor="name" className="block text-gray-100 mb-2">Name</label>
-                        <input
-                            id="name"
-                            type="text"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                            className="w-full p-2 rounded-lg bg-gray-700 text-gray-100 border border-gray-600 input-field"
-                            placeholder="Your Name"
-                            aria-label="Your name"
-                            aria-required="true"
-                        />
-                    </div>
-                    <div className="mb-4">
-                        <label htmlFor="email" className="block text-gray-100 mb-2">Email</label>
-                        <input
-                            id="email"
-                            type="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            className="w-full p-2 rounded-lg bg-gray-700 text-gray-100 border border-gray-600 input-field"
-                            placeholder="Your Email"
-                            aria-label="Your email"
-                            aria-required="true"
-                        />
-                    </div>
-                    <div className="mb-6">
-                        <label htmlFor="donation" className="block text-gray-100 mb-2">Optional Donation ($)</label>
-                        <input
-                            id="donation"
-                            type="number"
-                            value={donation}
-                            onChange={(e) => setDonation(e.target.value)}
-                            className="w-full p-2 rounded-lg bg-gray-700 text-gray-100 border border-gray-600 input-field"
-                            placeholder="Enter any amount to support us"
-                            min="1"
-                            step="0.01"
-                            aria-label="Optional donation amount"
-                        />
-                    </div>
-                    <div className="flex flex-col space-y-4">
-                        <button
-                            onClick={handleSubmit}
-                            className="w-full bg-blue-600 text-white font-semibold py-3 rounded-lg hover:bg-blue-500 transition hover-scale"
-                            aria-label="Download free itinerary"
-                        >
-                            Download Free Itinerary
-                        </button>
-                        <button
-                            onClick={handleStripePayPal}
-                            className="w-full bg-blue-600 text-white font-semibold py-3 rounded-lg hover:bg-blue-500 transition hover-scale"
-                            aria-label="Donate with Stripe or PayPal"
-                        >
-                            Donate with Stripe/PayPal
-                        </button>
-                        <a
-                            href="https://www.buymeacoffee.com/girona-gravel"
-                            className="w-full bg-blue-600 text-white font-semibold py-3 rounded-lg hover:bg-blue-500 transition hover-scale text-center"
-                            aria-label="Buy me a coffee donation"
-                        >
-                            Buy Me a Coffee
-                        </a>
+                <div id="download-form" className="bg-gray-800 p-10 rounded-xl shadow-2xl mt-16 scroll-reveal">
+                    <h3 className="text-3xl font-bold text-emerald-400 mb-6 text-center">Access Your Premium Itinerary</h3>
+                    <p className="text-gray-100 mb-8 text-center max-w-2xl mx-auto">Register to receive our expertly curated 6-day Girona gravel itinerary, featuring Strava routes, premium accommodations, dining recommendations, and essential gear advice for an unparalleled cycling experience.</p>
+                    {error && <p className="text-red-400 mb-6 text-center font-semibold">{error}</p>}
+                    <div className="space-y-6 max-w-md mx-auto">
+                        <div>
+                            <label htmlFor="name" className="block text-gray-100 mb-2 font-semibold">Name</label>
+                            <input
+                                id="name"
+                                type="text"
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
+                                className="w-full p-3 rounded-lg bg-gray-700 text-gray-100 border border-gray-600 input-field"
+                                placeholder="Your Name"
+                                aria-label="Your name"
+                                aria-required="true"
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor="email" className="block text-gray-100 mb-2 font-semibold">Email</label>
+                            <input
+                                id="email"
+                                type="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                className="w-full p-3 rounded-lg bg-gray-700 text-gray-100 border border-gray-600 input-field"
+                                placeholder="Your Email"
+                                aria-label="Your email"
+                                aria-required="true"
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor="donation" className="block text-gray-100 mb-2 font-semibold">Support Our Mission (Optional Contribution $)</label>
+                            <input
+                                id="donation"
+                                type="number"
+                                value={donation}
+                                onChange={(e) => setDonation(e.target.value)}
+                                className="w-full p-3 rounded-lg bg-gray-700 text-gray-100 border border-gray-600 input-field"
+                                placeholder="Enter amount to support us"
+                                min="1"
+                                step="0.01"
+                                aria-label="Optional contribution amount"
+                            />
+                            <p className="text-gray-400 text-sm mt-2">Your contribution supports the development of exceptional cycling routes worldwide.</p>
+                        </div>
+                        <div className="space-y-4">
+                            <button
+                                onClick={handleSubmit}
+                                className="w-full btn-primary text-white font-semibold py-4 rounded-lg text-lg shadow-lg"
+                                aria-label="Request complimentary itinerary"
+                            >
+                                Request Itinerary
+                            </button>
+                            <button
+                                onClick={handleStripePayPal}
+                                className="w-full btn-accent text-white font-semibold py-4 rounded-lg text-lg shadow-lg"
+                                aria-label="Contribute with Stripe or PayPal"
+                            >
+                                Contribute with Stripe/PayPal
+                            </button>
+                            <a
+                                href="https://www.buymeacoffee.com/girona-gravel"
+                                className="w-full btn-primary text-white font-semibold py-4 rounded-lg text-lg shadow-lg text-center"
+                                aria-label="Support via Buy Me a Coffee"
+                            >
+                                Support via Buy Me a Coffee
+                            </a>
+                        </div>
                     </div>
                 </div>
             );
         };
 
         const GearGuide = () => (
-            <div className="mt-12">
-                <h3 className="text-2xl font-bold text-emerald-400 mb-4 text-center">Gravel Gear Guide</h3>
-                <p className="text-gray-100 mb-6 text-center">Prepare for Girona’s mixed terrain with these gravel-specific recommendations:</p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="bg-gray-800 p-6 rounded-lg hover-scale">
-                        <h4 className="text-lg font-semibold text-gray-100">Bike Setup</h4>
-                        <p className="text-gray-100">Use a gravel bike with 700x40mm tires for optimal grip on Girona’s mixed surfaces. Ensure clearance for mud.</p>
-                    </div>
-                    <div className="bg-gray-800 p-6 rounded-lg hover-scale">
-                        <h4 className="text-lg font-semibold text-gray-100">Packing</h4>
-                        <p className="text-gray-100">Bring lightweight panniers or a frame bag, a multi-tool, and spare tubes for gravel repairs.</p>
-                    </div>
-                    <div className="bg-gray-800 p-6 rounded-lg hover-scale">
-                        <h4 className="text-lg font-semibold text-gray-100">Clothing</h4>
-                        <p className="text-gray-100">Pack a breathable rain jacket and padded gravel shorts for spring weather and long rides.</p>
-                    </div>
-                    <div className="bg-gray-800 p-6 rounded-lg hover-scale">
-                        <h4 className="text-lg font-semibold text-gray-100">Navigation</h4>
-                        <p className="text-gray-100">Use a GPS device like a Garmin Edge 530 or Wahoo Elemnt Bolt for reliable Strava route tracking.</p>
-                    </div>
+            <div className="mt-16 scroll-reveal">
+                <h3 className="text-3xl font-bold text-emerald-400 mb-6 text-center">Essential Gravel Gear</h3>
+                <p className="text-gray-100 mb-8 text-center max-w-2xl mx-auto">Prepare for Girona’s diverse terrain with our curated gear recommendations for a refined bikepacking experience.</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    {[
+                        { title: "Bicycle Setup", desc: "Select a gravel bike with 700x42mm tubeless tires for optimal traction and durability on Girona’s varied terrain." },
+                        { title: "Packing Essentials", desc: "Travel light with a frame bag, multi-tool, and two spare tubes for efficient repairs on the trail." },
+                        { title: "Attire", desc: "Choose breathable layers, a waterproof jacket, and padded gravel shorts for comfort during extended rides." },
+                        { title: "Navigation Tools", desc: "Equip a GPS device such as the Garmin Edge 830 or Wahoo Elemnt Roam for precise Strava route navigation." }
+                    ].map((item, index) => (
+                        <div key={index} className="bg-gray-800 p-6 rounded-xl hover-scale shadow-lg">
+                            <h4 className="text-xl font-semibold text-gray-100 mb-3">{item.title}</h4>
+                            <p className="text-gray-100">{item.desc}</p>
+                        </div>
+                    ))}
                 </div>
             </div>
         );
 
         const WhyGirona = () => (
-            <div className="mt-12">
-                <h3 className="text-2xl font-bold text-emerald-400 mb-4 text-center">Why Girona is a Gravel Cycling Paradise</h3>
-                <p className="text-gray-100 mb-6 text-center">Girona is more than just a destination—it’s a cyclist’s dream where history, nature, and adventure converge.</p>
+            <div className="mt-16 scroll-reveal">
+                <h3 className="text-3xl font-bold text-emerald-400 mb-6 text-center">Why Girona Excels</h3>
+                <p className="text-gray-100 mb-8 text-center max-w-2xl mx-auto">Girona offers an unmatched blend of historical charm, stunning landscapes, and a thriving cycling culture, ideal for a premium gravel experience.</p>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div className="bg-gray-800 p-6 rounded-lg hover-scale">
-                        <h4 className="text-lg font-semibold text-gray-100">Rich Cultural Heritage</h4>
-                        <p className="text-gray-100">Pedal through Girona’s medieval streets, past the iconic Girona Cathedral and ancient city walls, steeped in history dating back to Roman times. Stop in Besalú to explore its 11th-century bridge and Jewish quarter.</p>
-                    </div>
-                    <div className="bg-gray-800 p-6 rounded-lg hover-scale">
-                        <h4 className="text-lg font-semibold text-gray-100">Breathtaking Landscapes</h4>
-                        <p className="text-gray-100">From the rolling hills of the Garrotxa Volcanic Zone to the rugged cliffs of the Costa Brava, Girona’s diverse terrain offers endless gravel trails with stunning views, serene lakes, and lush forests.</p>
-                    </div>
-                    <div className="bg-gray-800 p-6 rounded-lg hover-scale">
-                        <h4 className="text-lg font-semibold text-gray-100">World-Class Cycling Community</h4>
-                        <p className="text-gray-100">Girona is home to professional cyclists and a vibrant cycling culture. Join local group rides, visit cyclist-friendly cafes like La Fabrica, and connect with our Strava community to share your journey.</p>
-                    </div>
+                    {[
+                        { title: "Historical Significance", desc: "Traverse medieval Girona, including the iconic Cathedral and Besalú’s 11th-century bridge." },
+                        { title: "Diverse Landscapes", desc: "Pedal through Garrotxa’s volcanic hills to the dramatic cliffs and tranquil lakes of Costa Brava." },
+                        { title: "Cycling Community", desc: "Engage with professionals at La Fabrica café and connect via our Strava network for group rides." }
+                    ].map((item, index) => (
+                        <div key={index} className="bg-gray-800 p-6 rounded-xl hover-scale shadow-lg">
+                            <h4 className="text-xl font-semibold text-gray-100 mb-3">{item.title}</h4>
+                            <p className="text-gray-100">{item.desc}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        );
+
+        const PremierGravelClimbs = () => (
+            <div className="mt-16 scroll-reveal">
+                <h3 className="text-3xl font-bold text-emerald-400 mb-6 text-center">Premier Gravel Climbs</h3>
+                <p className="text-gray-100 mb-8 text-center max-w-2xl mx-auto">Challenge yourself on Girona’s iconic gravel climbs, each offering unique terrain and breathtaking views, perfect for the discerning gravel cyclist.</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {[
+                        {
+                            title: "Rocacorba",
+                            desc: "A legendary 10.5 km climb with 750 m elevation gain and an average gradient of 7.2%, featuring pitches up to 15%. Starting near Banyoles, this ascent through oak forests offers panoramic views of the Pyrenees and Costa Brava. A favorite among pros, its challenging gravel sections demand endurance and skill. Stop at La Cruïlla food truck in Canet d’Adri for post-climb Catalan fare."
+                        },
+                        {
+                            title: "Els Àngels",
+                            desc: "This 10 km climb from Girona’s Gavarres hills gains 450 m with a 4.5% average gradient. Accessible via both road and gravel routes, it leads to a historic sanctuary where Salvador Dalí wed Gala in 1958. The gravel descent is steep and rocky, requiring caution, but rewards with 360° views of Empordà and the Pyrenees. Ideal for a scenic coffee ride."
+                        },
+                        {
+                            title: "Sant Pere de Rodes",
+                            desc: "An 8.8 km climb in the Cap de Creus Natural Park with 512 m elevation and a 5.5% average gradient, featuring intense 7%+ opening kilometers. The summit reveals a Romanesque monastery and stunning coastal vistas. Perfect for gravel riders seeking a blend of history and scenic beauty near El Port de la Selva."
+                        },
+                        {
+                            title: "Coll de Bracons",
+                            desc: "A grueling 8.4 km climb in the Vall d’en Bas with 650 m elevation gain and a 7.8% average gradient, peaking at 18% ramps. Part of the Terra de Remences event, its rocky gravel sections test even seasoned cyclists. The reward is sweeping views of the Garrotxa region, making it a must-ride for challenge seekers."
+                        },
+                        {
+                            title: "Sant Grau",
+                            desc: "A 9 km ascent with 644 m elevation and a relentless 7% average gradient, offering minimal respite. Located near Girona, this climb weaves through dense forests and rolling hills, culminating in serene views of the Costa Brava. Its consistent challenge makes it a favorite for gravel riders building endurance."
+                        }
+                    ].map((climb, index) => (
+                        <div key={index} className="bg-gray-800 p-6 rounded-xl hover-scale shadow-lg">
+                            <h4 className="text-xl font-semibold text-gray-100 mb-3">{climb.title}</h4>
+                            <p className="text-gray-100">{climb.desc}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        );
+
+        const CafeCulture = () => (
+            <div className="mt-16 scroll-reveal">
+                <h3 className="text-3xl font-bold text-emerald-400 mb-6 text-center">Girona’s Vibrant Café Culture</h3>
+                <p className="text-gray-100 mb-8 text-center max-w-2xl mx-auto">Girona’s cycling-centric cafés are hubs of community and culture, offering premium coffee, cyclist-friendly amenities, and inviting atmospheres for pre- or post-ride relaxation.</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {[
+                        {
+                            title: "La Fabrica",
+                            desc: "The pioneer of Girona’s cycling cafés, founded by former pro Christian Meier and Amber Meier. Located in the Barri Vell, it offers specialty coffee, waffles, and bircher muesli. Its bike parking and wheel inflator make it a must-visit for cyclists."
+                        },
+                        {
+                            title: "La Comuna",
+                            desc: "Owned by triathletes Jan and Emma Frodeno, this Barri Vell café features a minimalist design with terracotta ceilings and a vertical garden. Enjoy breakfast burritos, acai bowls, or apple pie pancakes. Its proximity to Sant Daniel gravel trails makes it ideal for riders."
+                        },
+                        {
+                            title: "Oniria Café",
+                            desc: "Nestled in Ladama grocery, Oniria serves top-tier specialty coffee and vegan sweets like cakes and muffins. Located in the old town, it’s perfect for a pre-ride espresso, though limited food options make it less ideal post-ride."
+                        },
+                        {
+                            title: "Hors Catégorie",
+                            desc: "A cyclist’s haven in the old town, offering healthy fare, craft beers, and coffee amid cycling memorabilia. Its spacious interior with high ceilings and bike parking is perfect for watching races or enjoying a salmon poke post-ride."
+                        },
+                        {
+                            title: "Rustik Empordà",
+                            desc: "In Bellcaire, 35 km east of Girona, this café is a gravel ride staple. Known for loaded toasts and chocolate-banana croissants, it’s a must-stop on Empordà routes, though it closes early at 1 PM."
+                        },
+                        {
+                            title: "Tramuntana Girona",
+                            desc: "A cozy old-town spot with a focus on local ingredients, offering hearty breakfasts and strong coffee. Its cyclist-friendly vibe and proximity to gravel trails make it a favorite for group rides."
+                        },
+                        {
+                            title: "Originem",
+                            desc: "A boutique café in Girona’s historic center, Originem blends specialty coffee with artisanal pastries. Its intimate setting is ideal for cyclists seeking a refined pre-ride caffeine fix."
+                        },
+                        {
+                            title: "Annna",
+                            desc: "Located near Girona’s cycling routes, Annna offers organic smoothies, avocado toast, and robust espressos. Its sunny terrace is perfect for post-ride relaxation and people-watching."
+                        },
+                        {
+                            title: "Espresso Mafia",
+                            desc: "A sleek café in the old town, known for its expertly crafted coffee and minimalist aesthetic. Cyclists love its quick service and outdoor seating for a pre-ride boost."
+                        }
+                    ].map((cafe, index) => (
+                        <div key={index} className="bg-gray-800 p-6 rounded-xl hover-scale shadow-lg">
+                            <h4 className="text-xl font-semibold text-gray-100 mb-3">{cafe.title}</h4>
+                            <p className="text-gray-100">{cafe.desc}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        );
+
+        const CapDeCreusExperience = () => (
+            <div className="mt-16 scroll-reveal">
+                <h3 className="text-3xl font-bold text-emerald-400 mb-6 text-center">Riding to Cap de Creus</h3>
+                <p className="text-gray-100 mb-8 text-center max-w-2xl mx-auto">Experience the wild beauty of Cap de Creus, Spain’s easternmost point, on a breathtaking gravel ride through rugged terrain and cultural landmarks.</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {[
+                        {
+                            title: "The Route",
+                            desc: "This 48-63 mile ride from El Port de la Selva to Cap de Creus features 3,550-5,000 ft of elevation gain, weaving through the Cap de Creus Natural Park. Expect rocky gravel trails, technical descents, and rolling coastal paths with views of the Mediterranean. Start early to avoid crowds and enjoy serene vistas."
+                        },
+                        {
+                            title: "Cultural Highlights",
+                            desc: "Pedal through Cadaqués, once home to Salvador Dalí, and visit the historic Cap de Creus lighthouse. The route passes ancient vineyards and the Romanesque Sant Pere de Rodes monastery, blending adventure with cultural immersion."
+                        },
+                        {
+                            title: "Cyclist Tips",
+                            desc: "Bring ample water and snacks, as services are sparse. Use 700x42mm tires for traction on loose gravel. Stop at a beachside café in Roses for a refreshing break before the final climb. Early morning rides offer cooler temperatures and quieter trails."
+                        }
+                    ].map((item, index) => (
+                        <div key={index} className="bg-gray-800 p-6 rounded-xl hover-scale shadow-lg">
+                            <h4 className="text-xl font-semibold text-gray-100 mb-3">{item.title}</h4>
+                            <p className="text-gray-100">{item.desc}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        );
+
+        const BikeShops = () => (
+            <div className="mt-16 scroll-reveal">
+                <h3 className="text-3xl font-bold text-emerald-400 mb-6 text-center">Girona’s Premier Bike Shops</h3>
+                <p className="text-gray-100 mb-8 text-center max-w-2xl mx-auto">Girona’s bike shops cater to gravel cyclists with expert services, rentals, and gear, ensuring your ride is seamless.</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {[
+                        {
+                            title: "Velodrome Odeon Girona",
+                            desc: "Located in the heart of Girona, Velodrome Odeon offers high-end gravel bike rentals, repairs, and accessories. Their knowledgeable staff and extensive showroom make it a go-to for cyclists preparing for routes like Rocacorba or Els Àngels."
+                        },
+                        {
+                            title: "Eat Sleep Cycle",
+                            desc: "A cyclist’s hub near the Rambla, offering premium gravel bike rentals, guided tours, and a café with a sunny terrace. Their expert mechanics ensure your bike is ready for Girona’s challenging terrain."
+                        },
+                        {
+                            title: "Edibikes",
+                            desc: "Situated near Figueres, 15 km from Roses, Edibikes provides a large showroom, spare parts, and late hours (often until 8 PM). Ideal for cyclists exploring the Empordà region, with easy parking and no siesta closures in summer."
+                        }
+                    ].map((shop, index) => (
+                        <div key={index} className="bg-gray-800 p-6 rounded-xl hover-scale shadow-lg">
+                            <h4 className="text-xl font-semibold text-gray-100 mb-3">{shop.title}</h4>
+                            <p className="text-gray-100">{shop.desc}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        );
+
+        const BanyolesDining = () => (
+            <div className="mt-16 scroll-reveal">
+                <h3 className="text-3xl font-bold text-emerald-400 mb-6 text-center">Banyoles’ Culinary Gems</h3>
+                <p className="text-gray-100 mb-8 text-center max-w-2xl mx-auto">Refuel in Banyoles with vibrant bars and artisan bakeries, perfect for cyclists exploring the lake and nearby climbs.</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {[
+                        {
+                            title: "Vivissim Bar",
+                            desc: "A lively spot in Banyoles, Vivissim offers craft beers, tapas, and a relaxed vibe near the lake. Its cyclist-friendly terrace is ideal for post-ride drinks, with views of the Pyrenees in the distance."
+                        },
+                        {
+                            title: "Patisserie La Menuda",
+                            desc: "This artisan bakery in Banyoles is renowned for its fresh croissants, cakes, and Catalan pastries. A perfect stop for cyclists to grab a quick, high-quality snack before tackling Rocacorba or relaxing by the lake."
+                        },
+                        {
+                            title: "Banys Vells Banyoles",
+                            desc: "A lakeside cafeteria with a scenic setting, offering coffee, sandwiches, and regional dishes. Popular among cyclists for its proximity to Rocacorba and stunning views of Mare de Déu del Mont."
+                        }
+                    ].map((item, index) => (
+                        <div key={index} className="bg-gray-800 p-6 rounded-xl hover-scale shadow-lg">
+                            <h4 className="text-xl font-semibold text-gray-100 mb-3">{item.title}</h4>
+                            <p className="text-gray-100">{item.desc}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        );
+
+        const Beaches = () => (
+            <div className="mt-16 scroll-reveal">
+                <h3 className="text-3xl font-bold text-emerald-400 mb-6 text-center">Costa Brava’s Pristine Beaches</h3>
+                <p className="text-gray-100 mb-8 text-center max-w-2xl mx-auto">Unwind after your ride at Costa Brava’s stunning beaches, offering serene coves and crystal waters for ultimate relaxation.</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {[
+                        {
+                            title: "Aiguablava",
+                            desc: "A jewel of the Costa Brava, Aiguablava’s turquoise waters and fine sand make it a perfect post-ride retreat. Located near Begur, it’s ideal for a swim or a leisurely lunch at a nearby beachside restaurant."
+                        },
+                        {
+                            title: "Sa Caleta",
+                            desc: "Near L’Escala, this tranquil cove offers calm waters and a historic castle backdrop. Cyclists can relax here after coastal gravel rides, with easy access to local tapas bars."
+                        },
+                        {
+                            title: "Cala Pedrosa",
+                            desc: "A secluded pebble beach in Cap de Creus, accessible via gravel trails. Its rugged beauty and quiet atmosphere are perfect for cyclists seeking solitude after a challenging ride."
+                        }
+                    ].map((beach, index) => (
+                        <div key={index} className="bg-gray-800 p-6 rounded-xl hover-scale shadow-lg">
+                            <h4 className="text-xl font-semibold text-gray-100 mb-3">{beach.title}</h4>
+                            <p className="text-gray-100">{beach.desc}</p>
+                        </div>
+                    ))}
                 </div>
             </div>
         );
 
         const BlogSection = () => (
-            <div id="blog" className="mt-12">
-                <h3 className="text-2xl font-bold text-emerald-400 mb-4 text-center">Gravel Blog</h3>
-                <p className="text-gray-100 mb-6 text-center">Get inspired with tips and stories from Girona’s gravel trails.</p>
+            <div id="blog" className="mt-16 scroll-reveal">
+                <h3 className="text-3xl font-bold text-emerald-400 mb-6 text-center">Cycling Insights</h3>
+                <p className="text-gray-100 mb-8 text-center max-w-2xl mx-auto">Explore expert insights and stories from Girona’s renowned gravel trails.</p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="bg-gray-800 p-6 rounded-lg hover-scale">
-                        <img src="./rivergirona.jpg" alt="Rocacorba climb gravel trail" className="route-image mb-4" loading="lazy" onError={(e) => { e.target.src = 'https://via.placeholder.com/1200x300.png?text=Image+Not+Found'; }} />
-                        <h4 className="text-lg font-semibold text-gray-100">Top 5 Gravel Climbs in Girona</h4>
-                        <p className="text-gray-100">From Rocacorba to Els Àngels, discover the best climbs for gravel enthusiasts in Catalonia.</p>
-                        <a href="#blog" className="text-emerald-400 hover:underline mt-2 inline-block">Read More</a>
-                    </div>
-                    <div className="bg-gray-800 p-6 rounded-lg hover-scale">
-                        <img src="./rivergirona.jpg" alt="Girona bikepacking scenery" className="route-image mb-4" loading="lazy" onError={(e) => { e.target.src = 'https://via.placeholder.com/1200x300.png?text=Image+Not+Found'; }} />
-                        <h4 className="text-lg font-semibold text-gray-100">Why Girona is a Bikepacking Paradise</h4>
-                        <p className="text-gray-100">Explore Girona’s mix of gravel trails, culture, and cuisine that make it a must-visit.</p>
-                        <a href="#blog" className="text-emerald-400 hover:underline mt-2 inline-block">Read More</a>
-                    </div>
+                    {[
+                        { img: "https://images.unsplash.com/photo-1558377799-9f7d1bdab1b6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80", title: "Premier Gravel Climbs", desc: "Master challenging ascents like Rocacorba, Els Àngels, and Sant Pere de Rodes with our detailed guide to Girona’s iconic climbs." },
+                        { img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80", title: "Girona’s Cycling Allure", desc: "Learn why Girona’s trails, culture, and cuisine create an exceptional bikepacking destination." }
+                    ].map((post, index) => (
+                        <div key={index} className="bg-gray-800 p-6 rounded-xl hover-scale shadow-lg">
+                            <img src={post.img} alt={post.title} className="route-image mb-4" loading="lazy" />
+                            <h4 className="text-xl font-semibold text-gray-100 mb-3">{post.title}</h4>
+                            <p className="text-gray-100 mb-4">{post.desc}</p>
+                            <a href="#blog" className="text-emerald-400 hover:underline font-semibold">Read More</a>
+                        </div>
+                    ))}
                 </div>
             </div>
         );
 
         const WeatherSection = () => {
             const weatherData = [
-                { month: 'Jan', temp: 13, precip: 60, suitability: 'Cool and wet; less ideal, but possible with rain gear.' },
-                { month: 'Feb', temp: 14, precip: 50, suitability: 'Cool, occasional rain; suitable with proper layering.' },
-                { month: 'Mar', temp: 16, precip: 50, suitability: 'Mild, some showers; good for early-season rides.' },
-                { month: 'Apr', temp: 18, precip: 60, suitability: 'Pleasant, occasional rain; ideal for spring cycling.' },
-                { month: 'May', temp: 22, precip: 50, suitability: 'Warm, low rain; excellent for gravel routes.' },
-                { month: 'Jun', temp: 26, precip: 30, suitability: 'Warm, mostly dry; prime cycling season.' },
-                { month: 'Jul', temp: 29, precip: 20, suitability: 'Hot, dry; great but requires hydration and sun protection.' },
-                { month: 'Aug', temp: 29, precip: 30, suitability: 'Hot, mostly dry; good but plan for early rides.' },
-                { month: 'Sep', temp: 26, precip: 60, suitability: 'Warm, some rain; excellent for late-season rides.' },
-                { month: 'Oct', temp: 22, precip: 80, suitability: 'Mild, wetter; good with rain gear.' },
-                { month: 'Nov', temp: 17, precip: 70, suitability: 'Cool, wet; suitable with proper gear.' },
-                { month: 'Dec', temp: 14, precip: 60, suitability: 'Cool, rainy; less ideal but feasible.' }
+                { month: 'Jan', temp: 13, precip: 60, suitability: 'Cool and wet; pack rain gear.' },
+                { month: 'Feb', temp: 14, precip: 50, suitability: 'Cool, some rain; layer up.' },
+                { month: 'Mar', temp: 16, precip: 50, suitability: 'Mild, good for early rides.' },
+                { month: 'Apr', temp: 18, precip: 60, suitability: 'Pleasant, ideal for spring.' },
+                { month: 'May', temp: 22, precip: 50, suitability: 'Warm, excellent for gravel.' },
+                { month: 'Jun', temp: 26, precip: 30, suitability: 'Warm, prime cycling season.' },
+                { month: 'Jul', temp: 29, precip: 20, suitability: 'Hot, stay hydrated.' },
+                { month: 'Aug', temp: 29, precip: 30, suitability: 'Hot, early rides recommended.' },
+                { month: 'Sep', temp: 26, precip: 60, suitability: 'Warm, great for late rides.' },
+                { month: 'Oct', temp: 22, precip: 80, suitability: 'Mild, wetter; bring gear.' },
+                { month: 'Nov', temp: 17, precip: 70, suitability: 'Cool, wet; plan accordingly.' },
+                { month: 'Dec', temp: 14, precip: 60, suitability: 'Cool, rainy; feasible.' }
             ];
 
-            const maxTemp = 30; // Max temp for scaling (°C)
-            const maxPrecip = 100; // Max precip for scaling (mm)
+            const maxTemp = 30;
+            const maxPrecip = 100;
 
             return (
-                <div id="weather" className="mt-12">
-                    <h3 className="text-2xl font-bold text-emerald-400 mb-4 text-center">Weather in Girona & Costa Brava</h3>
-                    <p className="text-gray-100 mb-6 text-center">Girona and Costa Brava enjoy a Mediterranean climate with mild winters and warm summers, perfect for gravel cycling year-round. Below is a monthly breakdown to help you plan your trip, along with a chart of average temperatures and precipitation.</p>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                        {weatherData.map((data, index) => (
-                            <div key={index} className="bg-gray-800 p-6 rounded-lg hover-scale">
-                                <h4 className="text-lg font-semibold text-gray-100">{data.month}</h4>
-                                <p className="text-gray-100">Avg High: {data.temp}°C</p>
-                                <p className="text-gray-100">Precipitation: {data.precip}mm</p>
-                                <p className="text-gray-100 mt-2">{data.suitability}</p>
-                            </div>
-                        ))}
-                    </div>
-                    <div className="bg-gray-800 p-6 rounded-lg">
-                        <h4 className="text-lg font-semibold text-gray-100 mb-4 text-center">Temperature & Precipitation by Month</h4>
+                <div id="weather" className="mt-16 scroll-reveal">
+                    <h3 className="text-3xl font-bold text-emerald-400 mb-6 text-center">Girona’s Cycling Climate</h3>
+                    <p className="text-gray-100 mb-8 text-center max-w-2xl mx-auto">Girona’s Mediterranean climate supports year-round gravel cycling. Plan your journey with our monthly weather insights.</p>
+                    <div className="bg-gray-800 p-8 rounded-xl shadow-lg">
+                        <h4 className="text-xl font-semibold text-gray-100 mb-6 text-center">Temperature & Precipitation</h4>
                         <div className="weather-chart">
                             {weatherData.map((data, index) => (
                                 <div key={index} className="weather-bar">
                                     <div
                                         className="temp-bar"
-                                        style={{ height: `${(data.temp / maxTemp) * 150}px` }}
+                                        style={{ height: `${(data.temp / maxTemp) * 160}px` }}
                                         title={`Temperature: ${data.temp}°C`}
                                     ></div>
                                     <div
                                         className="precip-bar"
-                                        style={{ height: `${(data.precip / maxPrecip) * 150}px`, marginTop: '4px' }}
+                                        style={{ height: `${(data.precip / maxPrecip) * 160}px`, marginTop: '6px' }}
                                         title={`Precipitation: ${data.precip}mm`}
                                     ></div>
                                     <div className="weather-label">{data.month}</div>
@@ -627,64 +905,54 @@
         };
 
         const FAQSection = () => (
-            <div id="faq" className="mt-12">
-                <h3 className="text-2xl font-bold text-emerald-400 mb-4 text-center">Frequently Asked Questions</h3>
-                <div className="space-y-4">
-                    <div className="bg-gray-800 p-6 rounded-lg hover-scale">
-                        <h4 className="text-lg font-semibold text-gray-100">What’s included in the free itinerary?</h4>
-                        <p className="text-gray-100">A PDF with daily gravel routes, Strava links, curated accommodations, dining, packing tips, and gear recommendations.</p>
-                    </div>
-                    <div className="bg-gray-800 p-6 rounded-lg hover-scale">
-                        <h4 className="text-lg font-semibold text-gray-100">Is this itinerary gravel-specific?</h4>
-                        <p className="text-gray-100">Yes! Routes are optimized for gravel and mixed terrain, with tips for bike setup and bikepacking.</p>
-                    </div>
-                    <div className="bg-gray-800 p-6 rounded-lg hover-scale">
-                        <h4 className="text-lg font-semibold text-gray-100">How do I receive the itinerary?</h4>
-                        <p className="text-gray-100">After submitting your details, we’ll email the PDF and Strava links within 24 hours.</p>
-                    </div>
+            <div id="faq" className="mt-16 scroll-reveal">
+                <h3 className="text-3xl font-bold text-emerald-400 mb-6 text-center">Frequently Asked Questions</h3>
+                <div className="space-y-6">
+                    {[
+                        { q: "What does the itinerary include?", a: "A premium PDF featuring 6 days of gravel routes, Strava links, curated accommodations, dining recommendations, and gear advice." },
+                        { q: "Is it tailored for gravel cycling?", a: "Yes, designed specifically for gravel and mixed terrain, with tailored bike setup recommendations." },
+                        { q: "How do I access the itinerary?", a: "Submit your details, and we’ll email the PDF and Strava links within 24 hours." }
+                    ].map((faq, index) => (
+                        <div key={index} className="bg-gray-800 p-6 rounded-xl hover-scale shadow-lg">
+                            <h4 className="text-xl font-semibold text-gray-100 mb-3">{faq.q}</h4>
+                            <p className="text-gray-100">{faq.a}</p>
+                        </div>
+                    ))}
                 </div>
             </div>
         );
 
         const Testimonials = () => (
-            <div className="mt-12">
-                <h3 className="text-2xl font-bold text-emerald-400 mb-4 text-center">What Gravel Cyclists Say</h3>
+            <div className="mt-16 scroll-reveal">
+                <h3 className="text-3xl font-bold text-emerald-400 mb-6 text-center">Cyclist Testimonials</h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div className="bg-gray-800 p-6 rounded-lg hover-scale flex items-center">
-                        <img src="https://via.placeholder.com/50?text=Emma" alt="Cyclist Emma avatar" className="w-12 h-12 rounded-full mr-4" loading="lazy" />
-                        <div>
-                            <p className="text-gray-100 italic">"The ultimate gravel guide for Girona! Stunning routes and perfect recommendations."</p>
-                            <p className="text-gray-300 mt-2 font-semibold">— Emma, UK</p>
+                    {[
+                        { img: "https://via.placeholder.com/50?text=Emma", name: "Emma, UK", quote: "This itinerary elevated my Girona experience with exceptional routes and seamless planning." },
+                        { img: "https://via.placeholder.com/50?text=Carlos", name: "Carlos, Spain", quote: "The coastal descents and curated stops created an unforgettable cycling journey." },
+                        { img: "https://via.placeholder.com/50?text=Sarah", name: "Sarah, USA", quote: "Rocacorba was a highlight, and the itinerary made every detail effortless." }
+                    ].map((testimonial, index) => (
+                        <div key={index} className="bg-gray-800 p-6 rounded-xl hover-scale shadow-lg flex items-center">
+                            <img src={testimonial.img} alt={`${testimonial.name} avatar`} className="w-14 h-14 rounded-full mr-4" loading="lazy" />
+                            <div>
+                                <p className="text-gray-100 italic">"{testimonial.quote}"</p>
+                                <p className="text-gray-300 mt-3 font-semibold">— {testimonial.name}</p>
+                            </div>
                         </div>
-                    </div>
-                    <div className="bg-gray-800 p-6 rounded-lg hover-scale flex items-center">
-                        <img src="https://via.placeholder.com/50?text=Carlos" alt="Cyclist Carlos avatar" className="w-12 h-12 rounded-full mr-4" loading="lazy" />
-                        <div>
-                            <p className="text-gray-100 italic">"The gravel paths and coastal views were unforgettable. A must-do adventure!"</p>
-                            <p className="text-gray-300 mt-2 font-semibold">— Carlos, Spain</p>
-                        </div>
-                    </div>
-                    <div className="bg-gray-800 p-6 rounded-lg hover-scale flex items-center">
-                        <img src="https://via.placeholder.com/50?text=Sarah" alt="Cyclist Sarah avatar" className="w-12 h-12 rounded-full mr-4" loading="lazy" />
-                        <div>
-                            <p className="text-gray-100 italic">"The Rocacorba climb was epic, and the itinerary made planning a breeze!"</p>
-                            <p className="text-gray-300 mt-2 font-semibold">— Sarah, USA</p>
-                        </div>
-                    </div>
+                    ))}
                 </div>
             </div>
         );
 
         const StravaFeed = () => (
-            <div className="mt-12">
-                <h3 className="text-2xl font-bold text-emerald-400 mb-4 text-center">Join Our Strava Community</h3>
-                <p className="text-gray-100 mb-6 text-center">See recent rides from our Girona Gravel Bikepacking Club!</p>
-                <div className="bg-gray-800 p-6 rounded-lg hover-scale text-center">
-                    <p className="text-gray-100">Strava feed coming soon! Join our club to share your rides.</p>
+            <div className="mt-16 scroll-reveal">
+                <h3 className="text-3xl font-bold text-emerald-400 mb-6 text-center">Join Our Strava Network</h3>
+                <p className="text-gray-100 mb-8 text-center max-w-2xl mx-auto">Connect with a global community of gravel cyclists and share your Girona experiences.</p>
+                <div className="bg-gray-800 p-8 rounded-xl hover-scale shadow-lg text-center">
+                    <p className="text-gray-100 mb-6">Our Strava network is launching soon. Join our club to engage with fellow cyclists.</p>
                     <a
                         href="https://www.strava.com/clubs/girona-gravel-bikepacking"
-                        className="inline-block bg-emerald-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-emerald-500 transition hover-scale mt-4"
-                        aria-label="Join our Strava Club"
+                        className="btn-primary text-white font-semibold py-4 px-8 rounded-lg text-lg shadow-lg"
+                        aria-label="Join our Strava Network"
                     >
                         Join Now
                     </a>
@@ -693,180 +961,188 @@
         );
 
         const GironaHighlights = () => (
-            <div className="mt-12">
-                <h3 className="text-2xl font-bold text-emerald-400 mb-4 text-center">Girona’s Must-See Highlights</h3>
-                <p className="text-gray-100 mb-6 text-center">Beyond the trails, Girona offers unforgettable experiences to enrich your adventure.</p>
+            <div className="mt-16 scroll-reveal">
+                <h3 className="text-3xl font-bold text-emerald-400 mb-6 text-center">Girona’s Signature Experiences</h3>
+                <p className="text-gray-100 mb-8 text-center max-w-2xl mx-auto">Enhance your journey with Girona’s cultural, culinary, and natural highlights.</p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="bg-gray-800 p-6 rounded-lg hover-scale">
-                        <h4 className="text-lg font-semibold text-gray-100">Culinary Delights</h4>
-                        <p className="text-gray-100">Savor Catalonia’s cuisine at local markets like Mercat del Lleó or dine at Michelin-starred restaurants like El Celler de Can Roca, blending tradition with innovation.</p>
-                    </div>
-                    <div className="bg-gray-800 p-6 rounded-lg hover-scale">
-                        <h4 className="text-lg font-semibold text-gray-100">Historical Landmarks</h4>
-                        <p className="text-gray-100">Visit the colorful houses along the Onyar River, explore the Jewish Quarter’s narrow alleys, or climb the Sant Feliu Basilica for panoramic views.</p>
-                    </div>
-                    <div className="bg-gray-800 p-6 rounded-lg hover-scale">
-                        <h4 className="text-lg font-semibold text-gray-100">Festivals and Events</h4>
-                        <p className="text-gray-100">Time your trip for Girona’s Temps de Flors festival in May, where the city blooms with floral displays, or join the Girona Cycling Festival for rides and expos.</p>
-                    </div>
-                    <div className="bg-gray-800 p-6 rounded-lg hover-scale">
-                        <h4 className="text-lg font-semibold text-gray-100">Coastal Adventures</h4>
-                        <p className="text-gray-100">Take a break from cycling to kayak along the Costa Brava, explore hidden coves, or relax on pristine beaches like Sa Caleta in L’Escala.</p>
-                    </div>
+                    {[
+                        { title: "Gastronomic Excellence", desc: "Indulge in Catalan cuisine at Mercat del Lleó or the Michelin-starred El Celler de Can Roca." },
+                        { title: "Historical Treasures", desc: "Discover the Onyar River’s iconic houses and the historic Jewish Quarter." },
+                        { title: "Cultural Events", desc: "Experience the Temps de Flors festival in May or the Girona Cycling Festival." },
+                        { title: "Coastal Exploration", desc: "Kayak along Costa Brava’s coves or unwind on Sa Caleta beach in L’Escala." }
+                    ].map((highlight, index) => (
+                        <div key={index} className="bg-gray-800 p-6 rounded-xl hover-scale shadow-lg">
+                            <h4 className="text-xl font-semibold text-gray-100 mb-3">{highlight.title}</h4>
+                            <p className="text-gray-100">{highlight.desc}</p>
+                        </div>
+                    ))}
                 </div>
             </div>
         );
 
-        const App = () => (
-            <ErrorBoundary>
-                <div>
-                    <NavBar />
-                    <Header />
-                    <main className="container mx-auto py-12 px-4">
-                        <section className="mb-16 text-center animate-fade-in">
-                            <h2 className="text-4xl md:text-3xl font-bold text-gray-100 mb-6">The Perfect Girona Gravel Cycling Guide</h2>
-                            <p className="text-lg text-gray-100 max-w-3xl mx-auto">
-                                Experience a 269-mile gravel bikepacking adventure through Girona’s world-class landscapes. From enchanted forests to the rugged Costa Brava, this free itinerary is your key to the best gravel cycling in Catalonia, complete with Strava routes, curated stops, and expert tips. Discover why Girona is a global cycling mecca, with its blend of medieval charm, diverse terrain, and vibrant cycling culture.
-                            </p>
-                            <RouteMap />
-                        </section>
-                        <WhyGirona />
-                        <section id="itinerary">
-                            <h2 className="text-4xl md:text-3xl font-bold text-gray-100 mb-8 text-center">Your Gravel Itinerary</h2>
-                            <ItineraryDay
-                                day="Day 1"
-                                title="Girona to Sant Vicenç de Torelló"
-                                distance="59 miles"
-                                elevation="5,800 ft"
-                                description={
-                                    <>
-                                        Kick off your gravel adventure with this <a href="https://www.strava.com/routes/3337115754495567062" target="_blank" className="text-emerald-400 hover:underline" aria-label="Day 1 Strava route">Strava route</a> to Sant Vicenç de Torelló. Navigate mixed terrain to Pantà de Susqueda, with stunning forested hills and crystalline waters.
-                                    </>
-                                }
-                                images={["./rivergirona.jpg"]}
-                                accommodation="Allotjament Rural Can Passerells - A luxurious rural retreat with cyclist-friendly amenities and serene countryside views."
-                                dining="L'Engruna d'en Pousa, Sant Vicenç de Torelló - Savor exquisite Catalan cuisine with local ingredients."
-                            />
-                            <ItineraryDay
-                                day="Day 2"
-                                title="Sant Vicenç de Torelló to Banyoles"
-                                distance="60 miles"
-                                elevation="5,100 ft"
-                                description={
-                                    <>
-                                        Ride this <a href="https://www.strava.com/routes/3353945102780710588" target="_blank" className="text-emerald-400 hover:underline" aria-label="Day 2 Strava route">Strava route</a> through enchanted forests to Olot, Besalú, and Banyoles. Pause for gelato in Besalú and relax by the serene Lake Banyoles.
-                                    </>
-                                }
-                                images={["./rivergirona.jpg"]}
-                                accommodation="Casa Maui - A boutique, cyclist-friendly haven with serene lake proximity."
-                                dining="Petrichor Banyoles - Indulge in vibrant Mediterranean flavors."
-                            />
-                            <ItineraryDay
-                                day="Day 3"
-                                title="Banyoles to El Port de la Selva"
-                                distance="48 miles"
-                                elevation="5,200 ft"
-                                description={
-                                    <>
-                                        Conquer the Rocacorba climb via this <a href="https://www.strava.com/routes/3353961700586557486" target="_blank" className="text-emerald-400 hover:underline" aria-label="Day 3 Rocacorba Strava route">Strava route</a>, then ride to El Port de la Selva (<a href="https://www.strava.com/routes/3338319789874276566" target="_blank" className="text-emerald-400 hover:underline" aria-label="Day 3 coastal Strava route">Strava route</a>) with epic coastal descents and beach drinks.
-                                    </>
-                                }
-                                images={[
-                                    "https://via.placeholder.com/1200x300.png?text=Day+3+Image",
-                                    "./rivergirona.jpg"
-                                ]}
-                                accommodation="Hotel Porto Cristo - A luxurious seaside retreat with stunning waterfront views."
-                                dining="L'Art Restaurante Port de Reig - Enjoy patatas bravas and paella with local wines."
-                            />
-                            <ItineraryDay
-                                day="Day 4"
-                                title="El Port de la Selva to L'Escala"
-                                distance="51 miles"
-                                elevation="4,500 ft"
-                                description={
-                                    <>
-                                        Ride gravel roads to Cap de Creus, then enjoy coastal paths and a beach dip. This 51-mile journey ends in vibrant L'Escala with stunning Costa Brava scenery.
-                                    </>
-                                }
-                                images={[
-                                    "https://via.placeholder.com/1200x300.png?text=Day+4+Image",
-                                    "./rivergirona.jpg"
-                                ]}
-                                accommodation="Hotel Voramar - A luxurious beachfront retreat with panoramic sea views."
-                                dining="Restaurant Grop, L'Escala — Savor fresh seafood tapas and local wines."
-                            />
-                            <ItineraryDay
-                                day="Day 5"
-                                title="L'Escala to Tossa de Mar"
-                                distance="44 miles"
-                                elevation="3,900 ft"
-                                description={
-                                    <>
-                                        Start with a gravel ride to Rustik in L'Escala, then pedal to Begur for a snack. Enjoy Costa Brava gravel routes and end in Tossa de Mar with rooftop wine.
-                                    </>
-                                }
-                                images={["./rivergirona.jpg"]}
-                                accommodation="Hostel Elva Marina - A charming hostel with a rooftop for sunset wine."
-                                dining="Portal Elva, Tossa de Mar — Indulge in Mediterranean cuisine; lunch at Annna."
-                            />
-                            <ItineraryDay
-                                day="Day 6"
-                                title="Tossa de Mar to Girona"
-                                distance="32 miles"
-                                elevation="2,400 ft"
-                                description={
-                                    <>
-                                        Ride this <a href="https://www.strava.com/routes/3359655898604872" target="_blank" className="text-blue-400 hover:underline" aria-label="Saturday Strava route">Strava route</a> to Sant Feliu de Guíxols and back to Girona. End with a delicious lunch in Girona’s cycling capital.
-                                    </>
-                                }
-                                images={["./rivergirona.jpg"]}
-                                accommodation="None"
-                                dining="La Fabrica, Girona — Celebrate with exquisite coffee and pastries."
-                            />
-                        </section>
-                        <DownloadForm />
-                        <GearGuide />
-                        <GironaHighlights />
-                        <BlogSection />
-                        <Testimonials />
-                        <StravaFeed />
-                        <WeatherSection />
-                        <FAQSection />
-                        <section className="text-center mt-12 flex justify-center items-center space-x-4">
-                            <a
-                                href="https://www.strava.com/clubs/girona-gravel"
-                                className="bg-emerald-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-emerald-700 transition-all duration-300 hover:scale-105"
-                                aria-label="Join our Strava community"
-                            >
-                                Join Our Strava
-                            </a>
-                            <a
-                                href="https://x.com/share?text=Just got the ultimate Girona gravel cycling itinerary for free! 🚴‍♀️ Check it out!&url=https://www.girona-luxe-bikepacking.net"
-                                className="bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-blue-500 transition-all duration-300 hover:scale-105"
-                                aria-label="Share on X"
-                            >
-                                Share on X
-                            </a>
-                        </section>
-                        <StickyCTA />
-                    </main>
-                    <footer className="bg-gray-800 text-gray-100 py-6">
-                        <div className="container mx-auto text-center">
-                            <p>© 2025 Girona Club Bikepacking Group. Your gravel adventure begins here!</p>
-                            <p className="mt-2 text-sm">Powered by Tailwind CSS and React.</p>
-                        </div>
-                    </footer>
-                </div>
-            </ErrorBoundary>
-        );
+        const App = () => {
+            useScrollReveal();
+            return (
+                <ErrorBoundary>
+                    <div>
+                        <NavBar />
+                        <Header />
+                        <main className="container mx-auto py-16 px-6">
+                            <section className="mb-20 text-center scroll-reveal">
+                                <h2 className="text-4xl md:text-5xl font-bold text-gray-100 mb-8">Your Premier Girona Gravel Experience</h2>
+                                <p className="text-lg text-gray-100 max-w-3xl mx-auto mb-10">
+                                    Embark on a meticulously crafted 269-mile gravel bikepacking journey through Girona’s stunning landscapes. From serene forests to the dramatic Costa Brava, our complimentary itinerary, featuring Strava routes, premium accommodations, and expert insights, ensures an exceptional cycling experience.
+                                </p>
+                                <RouteMap />
+                            </section>
+                            <WhyGirona />
+                            <PremierGravelClimbs />
+                            <CafeCulture />
+                            <CapDeCreusExperience />
+                            <BikeShops />
+                            <BanyolesDining />
+                            <Beaches />
+                            <section id="itinerary" className="scroll-reveal">
+                                <h2 className="text-4xl md:text-5xl font-bold text-gray-100 mb-10 text-center">Your 6-Day Gravel Itinerary</h2>
+                                <ItineraryDay
+                                    day="Day 1"
+                                    title="Girona to Sant Vicenç de Torelló"
+                                    distance="59 miles"
+                                    elevation="5,800 ft"
+                                    description={
+                                        <>
+                                            Begin your journey with this <a href="https://www.strava.com/routes/3337115754495567062" target="_blank" className="text-emerald-400 hover:underline" aria-label="Day 1 Strava route">Strava route</a> to Sant Vicenç de Torelló, navigating mixed terrain to the pristine waters of Pantà de Susqueda.
+                                        </>
+                                    }
+                                    images={["https://images.unsplash.com/photo-1558377799-9f7d1bdab1b6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"]}
+                                    accommodation="Allotjament Rural Can Passerells - A refined rural retreat with cyclist-friendly amenities."
+                                    dining="L'Engruna d’en Pousa - Exceptional Catalan cuisine crafted with local ingredients."
+                                />
+                                <ItineraryDay
+                                    day="Day 2"
+                                    title="Sant Vicenç de Torelló to Banyoles"
+                                    distance="60 miles"
+                                    elevation="5,100 ft"
+                                    description={
+                                        <>
+                                            Follow this <a href="https://www.strava.com/routes/3353945102780710588" target="_blank" className="text-emerald-400 hover:underline" aria-label="Day 2 Strava route">Strava route</a> through tranquil forests to Olot, Besalú, and the serene Lake Banyoles. Pause for artisanal gelato in Besalú or a coffee at Vivissim bar.
+                                        </>
+                                    }
+                                    images={["https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"]}
+                                    accommodation="Casa Maui - A boutique, cyclist-friendly haven near the lake."
+                                    dining="Petrichor Banyoles - Sophisticated Mediterranean cuisine."
+                                />
+                                <ItineraryDay
+                                    day="Day 3"
+                                    title="Banyoles to El Port de la Selva"
+                                    distance="48 miles"
+                                    elevation="5,200 ft"
+                                    description={
+                                        <>
+                                            Conquer the iconic Rocacorba climb via this <a href="https://www.strava.com/routes/3353961700586557486" target="_blank" className="text-emerald-400 hover:underline" aria-label="Day 3 Rocacorba Strava route">Strava route</a>, then descend to El Port de la Selva (<a href="https://www.strava.com/routes/3338319789874276566" target="_blank" className="text-emerald-400 hover:underline" aria-label="Day 3 coastal Strava route">Strava route</a>) for coastal vistas and refined dining.
+                                        </>
+                                    }
+                                    images={[
+                                        "https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                                        "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                                    ]}
+                                    accommodation="Hotel Porto Cristo - A luxurious seaside retreat with waterfront views."
+                                    dining="L'Art Restaurante Port de Reig - Savor patatas bravas and paella paired with local wines."
+                                />
+                                <ItineraryDay
+                                    day="Day 4"
+                                    title="El Port de la Selva to L'Escala"
+                                    distance="51 miles"
+                                    elevation="4,500 ft"
+                                    description={
+                                        <>
+                                            Traverse gravel paths to Cap de Creus, followed by scenic coastal routes to L’Escala, where Costa Brava’s beauty awaits. Visit the Sant Pere de Rodes monastery en route.
+                                        </>
+                                    }
+                                    images={[
+                                        "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                                        "https://images.unsplash.com/photo-1558377799-9f7d1bdab1b6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                                    ]}
+                                    accommodation="Hotel Voramar - A sophisticated beachfront retreat with panoramic sea views."
+                                    dining="Restaurant Grop, L’Escala - Fresh seafood tapas and fine local wines."
+                                />
+                                <ItineraryDay
+                                    day="Day 5"
+                                    title="L'Escala to Tossa de Mar"
+                                    distance="44 miles"
+                                    elevation="3,900 ft"
+                                    description={
+                                        <>
+                                            Navigate gravel routes from L’Escala to Begur, then follow Costa Brava paths to Tossa de Mar, with a stop at Aiguablava beach for a refreshing dip.
+                                        </>
+                                    }
+                                    images={["https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"]}
+                                    accommodation="Hostel Elva Marina - A charming retreat with a rooftop ideal for evening relaxation."
+                                    dining="Portal Elva, Tossa de Mar - Elevated Mediterranean cuisine; lunch at Annna."
+                                />
+                                <ItineraryDay
+                                    day="Day 6"
+                                    title="Tossa de Mar to Girona"
+                                    distance="32 miles"
+                                    elevation="2,400 ft"
+                                    description={
+                                        <>
+                                            Follow this <a href="https://www.strava.com/routes/3359655898604872" target="_blank" className="text-emerald-400 hover:underline" aria-label="Day 6 Strava route">Strava route</a> to Sant Feliu de Guíxols and return to Girona, concluding with a celebratory dining experience at La Fabrica.
+                                        </>
+                                    }
+                                    images={["https://images.unsplash.com/photo-1558377799-9f7d1bdab1b6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"]}
+                                    accommodation="None"
+                                    dining="La Fabrica, Girona - Artisanal coffee and pastries to celebrate your journey."
+                                />
+                            </section>
+                            <DownloadForm />
+                            <GearGuide />
+                            <GironaHighlights />
+                            <BlogSection />
+                            <Testimonials />
+                            <StravaFeed />
+                            <WeatherSection />
+                            <FAQSection />
+                            <section className="text-center mt-16 flex justify-center items-center space-x-6 scroll-reveal">
+                                <a
+                                    href="https://www.strava.com/clubs/girona-gravel"
+                                    className="btn-primary text-white font-semibold py-4 px-8 rounded-lg text-lg shadow-lg"
+                                    aria-label="Join our Strava network"
+                                >
+                                    Join Strava
+                                </a>
+                                <a
+                                    href="https://x.com/share?text=Discover the premier Girona gravel itinerary, complimentary for cyclists. Join the journey!&url=https://www.girona-luxe-bikepacking.net"
+                                    className="btn-accent text-white font-semibold py-4 px-8 rounded-lg text-lg shadow-lg"
+                                    aria-label="Share on X"
+                                >
+                                    Share on X
+                                </a>
+                            </section>
+                            <StickyCTA />
+                        </main>
+                        <footer className="bg-gray-800 text-gray-100 py-8">
+                            <div className="container mx-auto text-center">
+                                <p className="text-lg">© 2025 Girona Luxe Bikepacking. Your Premier Gravel Journey Awaits.</p>
+                                <p className="mt-3 text-sm">Designed with Tailwind CSS and React.</p>
+                            </div>
+                        </footer>
+                    </div>
+                </ErrorBoundary>
+            );
+        };
 
-        // Ensure root exists before rendering
-        const rootElement = document.getElementById('root');
-        if (rootElement) {
-            const root = ReactDOM.createRoot(rootElement);
+        try {
+            const root = ReactDOM.createRoot(document.getElementById('root'));
             root.render(<App />);
-        } else {
-            console.error('Root element not found');
+        } catch (error) {
+            console.error('Failed to render React app:', error);
+            document.getElementById('root').innerHTML = `
+                <div class="error-boundary">
+                    <h2>Application Failed to Load</h2>
+                    <p>An error occurred while loading the application. Please try refreshing the page or contact support.</p>
+                </div>
+            `;
         }
     </script>
 </body>
