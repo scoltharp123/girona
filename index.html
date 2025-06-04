@@ -168,6 +168,27 @@
             margin: 2rem auto;
             max-width: 600px;
         }
+
+        .splash-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(17, 24, 39, 0.95), rgba(31, 41, 55, 0.95));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            animation: fadeInUp 0.5s ease-out;
+            cursor: pointer;
+        }
+
+        .splash-content {
+            text-align: center;
+            padding: 2rem;
+            max-width: 600px;
+        }
     </style>
 </head>
 <body className="bg-gray-900 text-gray-100">
@@ -220,7 +241,6 @@
                     <a href="./" className="text-3xl font-bold text-emerald-400 tracking-tight">Girona Luxe Bikepacking</a>
                     <div className="space-x-6">
                         <a href="./itinerary.html" className="text-gray-100 hover:text-emerald-400 transition-colors font-semibold">Itinerary</a>
-<<<<<<< HEAD
                         <a href="/request.html" className="text-gray-100 hover:text-emerald-400 transition-colors font-semibold">Request Access</a>
                         <a href="./climbs.html" className="text-gray-100 hover:text-emerald-400 transition-colors font-semibold">Climbs</a>
                         <a href="./cafes.html" className="text-gray-100 hover:text-emerald-400 transition-colors font-semibold">Cafés</a>
@@ -235,22 +255,6 @@
                         <a href="./testimonials.html" className="text-gray-100 hover:text-emerald-400 transition-colors font-semibold">Testimonials</a>
                         <a href="./strava.html" className="text-gray-100 hover:text-emerald-400 transition-colors font-semibold">Strava</a>
                         <a href="./highlights.html" className="text-gray-100 hover:text-emerald-400 transition-colors font-semibold">Highlights</a>
-=======
-                        <a href="./request.html" className="text-gray-100 hover:text-emerald-400 transition-colors font-semibold">Request Access</a>
-                        <a href="/climbs.html" className="text-gray-100 hover:text-emerald-400 transition-colors font-semibold">Climbs</a>
-                        <a href="/cafes.html" className="text-gray-100 hover:text-emerald-400 transition-colors font-semibold">Cafés</a>
-                        <a href="/cap-de-creus.html" className="text-gray-100 hover:text-emerald-400 transition-colors font-semibold">Cap de Creus</a>
-                        <a href="/shops.html" className="text-gray-100 hover:text-emerald-400 transition-colors font-semibold">Bike Shops</a>
-                        <a href="/banyoles-dining.html" className="text-gray-100 hover:text-emerald-400 transition-colors font-semibold">Banyoles Dining</a>
-                        <a href="/beaches.html" className="text-gray-100 hover:text-emerald-400 transition-colors font-semibold">Beaches</a>
-                        <a href="/gear.html" className="text-gray-100 hover:text-emerald-400 transition-colors font-semibold">Gear Guide</a>
-                        <a href="/blog.html" className="text-gray-100 hover:text-emerald-400 transition-colors font-semibold">Blog</a>
-                        <a href="/weather.html" className="text-gray-100 hover:text-emerald-400 transition-colors font-semibold">Weather</a>
-                        <a href="/faq.html" className="text-gray-100 hover:text-emerald-400 transition-colors font-semibold">FAQ</a>
-                        <a href="/testimonials.html" className="text-gray-100 hover:text-emerald-400 transition-colors font-semibold">Testimonials</a>
-                        <a href="/strava.html" className="text-gray-100 hover:text-emerald-400 transition-colors font-semibold">Strava</a>
-                        <a href="/highlights.html" className="text-gray-100 hover:text-emerald-400 transition-colors font-semibold">Highlights</a>
->>>>>>> parent of 886fca4 (Update index.html)
                     </div>
                 </div>
             </nav>
@@ -346,11 +350,35 @@
             </div>
         );
 
+        const SplashModal = () => {
+            const handleClick = () => {
+                window.location.href = './itinerary.html';
+            };
+
+            return (
+                <div className="splash-modal" onClick={handleClick}>
+                    <div className="splash-content animate-fadeInUp">
+                        <h2 className="text-4xl sm:text-5xl font-bold text-emerald-400 mb-6">Welcome to Girona Luxe Bikepacking</h2>
+                        <p className="text-xl text-gray-100 mb-8">Click anywhere to explore our exclusive Girona gravel itinerary!</p>
+                        <button
+                            className="btn-primary text-white font-semibold py-4 px-8 rounded-full text-lg animate-pulse"
+                            aria-label="View Itinerary"
+                        >
+                            View Itinerary
+                        </button>
+                    </div>
+                </div>
+            );
+        };
+
         const App = () => {
             useScrollReveal();
+            const [showSplash, setShowSplash] = React.useState(true);
+
             return (
                 <ErrorBoundary>
                     <div>
+                        {showSplash && <SplashModal />}
                         <NavBar />
                         <Header />
                         <main className="container mx-auto py-16 px-6">
@@ -364,7 +392,7 @@
                             <WhyGirona />
                             <section className="text-center mt-16 flex justify-center items-center space-x-6 scroll-reveal">
                                 <a
-                                    href="/strava.html"
+                                    href="./strava.html"
                                     className="btn-primary text-white font-semibold py-4 px-8 rounded-lg text-lg shadow-lg"
                                     aria-label="Join our Strava network"
                                 >
