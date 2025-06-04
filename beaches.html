@@ -42,13 +42,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Relax post-ride at Costa Brava’s stunning beaches, from Aiguablava to Cala Pedrosa.">
-    <meta name="keywords" content="Costa Brava beaches, Girona cycling relaxation, Aiguablava beach, Cala Pedrosa">
+    <meta name="description" content="Explore the best Costa Brava beaches, including the iconic Aiguablava, perfect for relaxing after cycling in Girona.">
+    <meta name="keywords" content="Costa Brava beaches, Aiguablava beach, Girona cycling, Sa Caleta, Cala Pedrosa, Girona Luxe Bikepacking">
     <meta name="author" content="Girona Luxe Bikepacking">
-    <title>Costa Brava’s Pristine Beaches | Girona Luxe Bikepacking</title>
-    <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin defer></script>
-    <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin defer></script>
-    <script src="https://unpkg.com/@babel/standalone@7.25.6/babel.min.js" crossorigin defer></script>
+    <title>Best Costa Brava Beaches | Girona Luxe Bikepacking</title>
+    <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone@7.25.6/babel.min.js" crossorigin></script>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
@@ -57,6 +57,7 @@
             --accent: #F59E0B; /* Gold */
             --dark: #111827; /* Deep navy */
             --light: #F3F4F6; /* Light gray */
+            --ocean: #38BDF8; /* Sky blue for beach theme */
         }
 
         body {
@@ -121,13 +122,28 @@
             transform: scale(1.05);
         }
 
+        .gallery-img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-img:hover {
+            transform: scale(1.1);
+        }
+
         @media (max-width: 640px) {
             h1 {
-                font-size: 2.75rem;
+                font-size: 2.5rem;
             }
 
             h2 {
-                font-size: 2rem;
+                font-size: 1.75rem;
+            }
+
+            .gallery-img {
+                height: 200px;
             }
         }
 
@@ -141,6 +157,122 @@
             opacity: 1;
             transform: translateY(0);
         }
+    </style>
+</head>
+<body>
+    <nav class="nav-bar fixed w-full top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-white">Girona Luxe Bikepacking</h1>
+            <div class="space-x-4">
+                <a href="index.html" class="text-white hover:text-var(--accent)">Home</a>
+                <a href="#beaches" class="text-var(--accent) font-bold">Beaches</a>
+                <a href="#contact" class="text-white hover:text-var(--accent)">Contact</a>
+            </div>
+        </div>
+    </nav>
 
-        .error-boundary {
-            background: rgba
+    <header class="h-screen flex items-center justify-center bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80')">
+        <div class="text-center animate-fadeInUp">
+            <h1 class="text-5xl md:text-6xl font-bold text-white mb-4">The Best Beaches of Costa Brava</h1>
+            <p class="text-xl md:text-2xl text-white mb-6">Unwind after your Girona cycling adventure on Spain’s iconic shores.</p>
+            <a href="#beaches" class="btn-primary text-white px-6 py-3 rounded-full text-lg">Discover Beaches</a>
+        </div>
+    </header>
+
+    <section id="aiguablava" class="py-16 bg-var(--ocean)">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center text-white mb-8 scroll-reveal">Aiguablava: The Jewel of Costa Brava</h2>
+            <div class="flex flex-col md:flex-row items-center gap-8 scroll-reveal">
+                <div class="md:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Aiguablava Beach" class="rounded-lg gallery-img h-80 w-full object-cover" />
+                </div>
+                <div class="md:w-1/2">
+                    <p class="text-lg text-white mb-4">
+                        Aiguablava is the crown jewel of Costa Brava, renowned for its crystal-clear turquoise waters and fine golden sand. Nestled between pine-covered cliffs, this beach offers a serene escape for cyclists seeking relaxation. Its shallow, calm waters make it perfect for swimming and snorkeling, while the surrounding scenery captivates with its natural beauty. Aiguablava’s iconic status comes from its postcard-perfect views and tranquil ambiance, making it a must-visit after a day of cycling through Girona’s rugged trails.
+                    </p>
+                    <a href="#beaches" class="btn-accent text-white px-6 py-3 rounded-full text-lg">Explore More Beaches</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="beaches" class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center text-white mb-12 scroll-reveal">More Iconic Costa Brava Beaches</h2>
+            <p class="text-lg text-center text-gray-300 mb-12 scroll-reveal">
+                Costa Brava, Spain’s “Wild Coast,” boasts some of the Mediterranean’s most stunning beaches. From secluded coves to vibrant shores, these beaches are the perfect complement to your Girona cycling adventure.
+            </p>
+            <div id="beach-gallery" class="scroll-reveal"></div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-16 bg-var(--ocean)">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center text-white mb-12 scroll-reveal">Plan Your Coastal Adventure</h2>
+            <p class="text-lg text-center text-white mb-8 scroll-reveal">
+                Join Girona Luxe Bikepacking to combine world-class cycling with Costa Brava’s breathtaking beaches. Contact us to customize your trip!
+            </p>
+            <div class="text-center">
+                <a href="mailto:info@gironaluxebikepacking.com" class="btn-accent text-white px-6 py-3 rounded-full text-lg scroll-reveal">Get in Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-8 bg-var(--dark) text-center text-gray-400">
+        <p>© 2025 Girona Luxe Bikepacking. All rights reserved.</p>
+    </footer>
+
+    <script type="text/babel">
+        const beaches = [
+            {
+                name: "Sa Caleta",
+                description: "Near Lloret de Mar, Sa Caleta is a charming cove framed by vibrant red cliffs. Its calm waters are ideal for a refreshing dip after a long ride.",
+                image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+            },
+            {
+                name: "Cala Pedrosa",
+                description: "A secluded pebble beach surrounded by rugged cliffs, Cala Pedrosa offers tranquility and stunning underwater scenery for snorkelers.",
+                image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+            },
+            {
+                name: "Platja de Castell",
+                description: "An unspoiled beach near Palamós, Platja de Castell is known for its pristine sands and pine forests, offering a peaceful retreat for cyclists.",
+                image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+            }
+        ];
+
+        function BeachGallery() {
+            return (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {beaches.map((beach, index) => (
+                        <div key={index} className="bg-white rounded-lg overflow-hidden shadow-lg hover-scale scroll-reveal">
+                            <img src={beach.image} alt={beach.name} className="gallery-img h-64" />
+                            <div className="p-6">
+                                <h3 className="text-2xl font-bold text-var(--dark) mb-2">{beach.name}</h3>
+                                <p className="text-gray-600">{beach.description}</p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            );
+        }
+
+        ReactDOM.render(<BeachGallery />, document.getElementById('beach-gallery'));
+
+        // Scroll reveal effect
+        document.addEventListener('DOMContentLoaded', () => {
+            const reveals = document.querySelectorAll('.scroll-reveal');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            reveals.forEach(element => observer.observe(element));
+        });
+    </script>
+</body>
+</html>
