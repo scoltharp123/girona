@@ -37,16 +37,15 @@
         }
         return gk_fileData[filename] || "";
         }
-</script>
-<!DOCTYPE html>
+        </script><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Discover Costa Brava’s best beaches by bike. Pedal to Aiguablava, Cala Pedrosa, and more for stunning Mediterranean views and ultimate relaxation.">
-    <meta name="keywords" content="Costa Brava beaches, cycling Costa Brava, Aiguablava beach, Cala Pedrosa, Mediterranean coast, Girona bikepacking">
+    <meta name="description" content="Relax post-ride at Costa Brava’s stunning beaches, from Aiguablava to Cala Pedrosa.">
+    <meta name="keywords" content="Costa Brava beaches, Girona cycling relaxation, Aiguablava beach, Cala Pedrosa">
     <meta name="author" content="Girona Luxe Bikepacking">
-    <title>Best Beaches of Costa Brava by Bike | Girona Luxe Bikepacking</title>
+    <title>Costa Brava’s Pristine Beaches | Girona Luxe Bikepacking</title>
     <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin defer></script>
     <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin defer></script>
     <script src="https://unpkg.com/@babel/standalone@7.25.6/babel.min.js" crossorigin defer></script>
@@ -142,124 +141,6 @@
             opacity: 1;
             transform: translateY(0);
         }
-    </style>
-</head>
-<body>
-    <!-- Navigation -->
-    <nav class="nav-bar fixed w-full top-0 z-50 py-4">
-        <div class="container mx-auto px-6 flex justify-between items-center">
-            <a href="/" class="text-2xl font-bold text-white">Girona Luxe Bikepacking</a>
-            <div class="space-x-6">
-                <a href="#beaches" class="text-white hover:text-[var(--accent)]">Beaches</a>
-                <a href="#routes" class="text-white hover:text-[var(--accent)]">Cycling Routes</a>
-                <a href="#contact" class="text-white hover:text-[var(--accent)]">Contact</a>
-            </div>
-        </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section class="h-screen flex items-center justify-center bg-cover bg-center" style="background-image: url('https://via.placeholder.com/1920x1080?text=Aiguablava+Beach')">
-        <div class="text-center animate-fadeInUp">
-            <h1 class="text-5xl md:text-6xl text-white mb-4">Cycle to Costa Brava’s Best Beaches</h1>
-            <p class="text-xl md:text-2xl text-[var(--light)] mb-8">Pedal along scenic trails and arrive at the Mediterranean’s turquoise shores.</p>
-            <a href="#beaches" class="btn-primary text-white font-semibold py-3 px-6 rounded-lg">Discover the Beaches</a>
-        </div>
-    </section>
-    <!-- Image Placeholder: Replace 'https://via.placeholder.com/1920x1080?text=Aiguablava+Beach' with a high-resolution image of Aiguablava Beach, showing its clear turquoise waters and golden sand, ideally with a cyclist in the foreground to emphasize the biking theme. -->
-
-    <!-- Beaches Section -->
-    <section id="beaches" class="py-16">
-        <div class="container mx-auto px-6">
-            <h2 class="text-4xl text-center text-white mb-12">Top Costa Brava Beaches to Visit by Bike</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Beach 1: Aiguablava -->
-                <div class="bg-[var(--dark)] rounded-lg overflow-hidden hover-scale scroll-reveal">
-                    <img src="https://via.placeholder.com/600x400?text=Aiguablava+Beach" alt="Aiguablava Beach" class="w-full h-64 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-2xl text-[var(--accent)] mb-2">Aiguablava Beach</h3>
-                        <p class="text-[var(--light)]">Cycle through rolling hills to reach Aiguablava’s crystal-clear waters and fine golden sand. This sheltered cove is perfect for a refreshing dip after a ride, with stunning Mediterranean views that make every pedal worth it.</p>
-                    </div>
-                </div>
-                <!-- Image Placeholder: Replace with a vibrant image of Aiguablava Beach, showcasing its turquoise waters and surrounding cliffs. -->
-
-                <!-- Beach 2: Cala Pedrosa -->
-                <div class="bg-[var(--dark)] rounded-lg overflow-hidden hover-scale scroll-reveal">
-                    <img src="https://via.placeholder.com/600x400?text=Cala+Pedrosa" alt="Cala Pedrosa" class="w-full h-64 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-2xl text-[var(--accent)] mb-2">Cala Pedrosa</h3>
-                        <p class="text-[var(--light)]">Pedal along coastal paths to this secluded pebble beach. Surrounded by pine forests and rugged cliffs, Cala Pedrosa offers tranquility and a chance to soak in the Mediterranean’s raw beauty.</p>
-                    </div>
-                </div>
-                <!-- Image Placeholder: Replace with an image of Cala Pedrosa, highlighting its pebbled shore and pine-covered cliffs, ideally with a bike parked nearby. -->
-
-                <!-- Beach 3: Sa Caleta -->
-                <div class="bg-[var(--dark)] rounded-lg overflow-hidden hover-scale scroll-reveal">
-                    <img src="https://via.placeholder.com/600x400?text=Sa+Caleta" alt="Sa Caleta" class="w-full h-64 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-2xl text-[var(--accent)] mb-2">Sa Caleta</h3>
-                        <p class="text-[var(--light)]">Ride to Sa Caleta, a small sandy beach with calm waters near Lloret de Mar. Its medieval castle backdrop and vibrant marine life make it a cyclist’s paradise for relaxation and snorkeling.</p>
-                    </div>
-                </div>
-                <!-- Image Placeholder: Replace with an image of Sa Caleta, featuring its sandy shore and the nearby Castell d’en Plaja, with a cyclist in view. -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Cycling Experience Section -->
-    <section class="py-16 bg-[var(--dark)]">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-4xl text-white mb-8">Why Cycle to Costa Brava’s Beaches?</h2>
-            <p class="text-[var(--light)] max-w-3xl mx-auto mb-8">Nothing beats the thrill of pedaling through Girona’s scenic trails, with the Mediterranean breeze guiding you to Costa Brava’s pristine shores. As you crest a hill and spot the sparkling turquoise waters, the sense of accomplishment is unmatched. These beaches, from Aiguablava’s serene coves to Cala Pedrosa’s rugged charm, offer the perfect reward for your ride—whether you’re diving into the sea or relaxing on the sand.</p>
-            <a href="#routes" class="btn-accent text-white font-semibold py-3 px-6 rounded-lg">Explore Cycling Routes</a>
-        </div>
-    </section>
-
-    <!-- Routes Section -->
-    <section id="routes" class="py-16">
-        <div class="container mx-auto px-6">
-            <h2 class="text-4xl text-center text-white mb-12">Cycling Routes to the Coast</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bg-[var(--dark)] rounded-lg p-6 hover-scale scroll-reveal">
-                    <h3 class="text-2xl text-[var(--accent)] mb-4">Girona to Aiguablava</h3>
-                    <p class="text-[var(--light)]">A 40km ride through lush forests and coastal paths. Moderate climbs lead to breathtaking views of Aiguablava’s turquoise waters. Perfect for a full-day adventure.</p>
-                </div>
-                <div class="bg-[var(--dark)] rounded-lg p-6 hover-scale scroll-reveal">
-                    <h3 class="text-2xl text-[var(--accent)] mb-4">Palafrugell to Cala Pedrosa</h3>
-                    <p class="text-[var(--light)]">A 15km scenic route along quiet roads and trails. This shorter ride ends at the tranquil Cala Pedrosa, ideal for a quick escape to the coast.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-16 bg-[var(--dark)]">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-4xl text-white mb-8">Plan Your Coastal Bike Adventure</h2>
-            <p class="text-[var(--light)] max-w-2xl mx-auto mb-8">Ready to cycle to Costa Brava’s stunning beaches? Contact us for personalized routes, guided tours, or bike rental options.</p>
-            <a href="mailto:info@gironaluxebikepacking.com" class="btn-primary text-white font-semibold py-3 px-6 rounded-lg">Get in Touch</a>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="py-8 bg-[var(--dark)] text-center">
-        <p class="text-[var(--light)]">&copy; 2025 Girona Luxe Bikepacking. All rights reserved.</p>
-    </footer>
-
-    <!-- Scroll Reveal Script -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const reveals = document.querySelectorAll('.scroll-reveal');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            reveals.forEach(element => observer.observe(element));
-        });
-    </script>
-</body>
-</html>
+        .error-boundary {
+            background: rgba
